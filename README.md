@@ -1,5 +1,3 @@
-Here’s a more organized and visually separated version for your README:
-
 ---
 
 # My Portfolio
