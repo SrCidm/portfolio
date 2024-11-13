@@ -7,9 +7,6 @@ Welcome to my web developer portfolio. This project showcases a variety of appli
 
 🚀 Project: Structure and Technologies
 Inside this portfolio, you'll see the following folder design and some of the key files:
-
-text
-Copiar código
 /
 ├── public/
 │   └── assets/
@@ -21,6 +18,7 @@ Copiar código
 │   └── projects/
 │       └── index.astro
 └── package.json
+
 The project uses .astro for components and layouts. Each page is exposed as a route with its respective content. Technology icons are organized into reusable components, ensuring visual consistency throughout the project.
 
 🌐 Key Technologies:
@@ -52,12 +50,10 @@ Code on GitHub
 
 📦 Installation
 To clone the repository and run the project on your local machine:
-
-bash
-Copiar código
 git clone https://github.com/SrCidm/portfolio.git
 cd portfolio
 npm install
+
 🧞 Commands
 Run these commands from the root of the project in the terminal:
 
