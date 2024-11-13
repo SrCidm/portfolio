@@ -1,0 +1,37 @@
+---
+const EXPERIENCE = [
+    {
+        date:'Feb 2024 - Present',
+        title:'Full Stack Developer - University of Helsinki',
+        description:
+        'This course provides comprehensive training in full-stack development, covering both frontend and backend technologies. Through hands-on projects, I am learning how to build dynamic and responsive web applications using modern frameworks, databases, and best practices in web development. The course emphasizes key skills such as server-side programming, RESTful APIs, state management, and frontend frameworks like React. By the end, I’ll have a strong foundation in full-stack development, well-prepared to build and deploy end-to-end web applications.',
+        image:''
+    },
+    {
+        date:'Jan 2024',
+        title:'Programming Course - PROGRAMMING UNIVERSITY',
+        description:
+        'The Programming Course provided me with comprehensive training in the programming languages Java, JavaScript, and Python. I learned the fundamentals of programming, such as variables, data types, control structures, and functions. I also gained experience in the development of web and desktop applications.',
+        image:"/projects/C/CProgram.webp"
+    },
+    {
+        date:'Nov 2023',
+        title:'Introduction to Blockchain,Cryptocurrency, and Smart Contracts Course',
+        description:
+        'This course provided a foundational understanding of blockchain technology, cryptocurrency principles, and the basics of creating and using smart contracts. I gained insight into key blockchain concepts, decentralized applications (DApps), and cryptocurrencies. Additionally, I was introduced to Solidity, a programming language used to develop smart contracts on the Ethereum blockchain, where I learned basic concepts for creating simple contracts. This experience equipped me with a beginner-level understanding of how blockchain systems and smart contracts operate.',
+        image:"/projects/C/CBlockchain.webp"
+    },
+]
+import ExperienceItems from "./ExperienceItems.astro"
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+    {
+        EXPERIENCE.map(experience =>(
+            <li class="mb-10 ms-4">
+                <ExperienceItems {...experience}/>
+            </li>
+        ))
+    }
+ 
+</ol>

@@ -1,0 +1,118 @@
+---
+import JSIcon from "./icons/JSIcon.astro";
+import NextIcon from "./icons/NextIcon.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Python from "./icons/Python.astro";
+import Reflex from "./icons/ReflexIcon.astro";
+import CssIcon from "./icons/CssIcon.astro";
+import HTMLIcon from "./icons/HTMLIcon.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white  ",
+    icon: NextIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-white text-[#73bcf6]",
+    icon: Tailwind,
+  },
+  JAVASCRIPT:{
+    name:"JavaScript",
+    class: "bg-[#f0da4f] text-[#323330]",
+    icon:JSIcon,
+  },
+  PYTHON:{
+    name:"Python",
+    class:"bg-[#171717] text-[#e3e3e3]",
+    icon:Python,
+  },
+  REFLEX:{
+    name:"",
+    class:"bg-[#000000] text-[#ffffff]",
+    icon:Reflex,
+  },
+    CSS:{
+      name:"CSS",
+      class:"bg-[#0d1117] text-[#ffffff]",
+      icon:CssIcon,
+    },
+    HTML:{
+      name:"HTML",
+      class:"bg-[#0d1117] text-[#ffffff]",
+      icon:HTMLIcon,
+    }
+};
+const PROJECTS = [
+  {
+    title: "Crypto Page",
+    description:
+      "This project is a web application built with React.js and Material-UI for visualizing cryptocurrency data using the CryptoCompare API. It offers real-time price visualization, interactive historical charts, and a carousel showcasing trending cryptocurrencies.",
+    link: "#",
+    github: "https://github.com/SrCidm/crypto-pagev1",
+    image: "/public/projects/svgp1.webp",
+    tags: [TAGS.CSS,TAGS.JAVASCRIPT,TAGS.HTML],
+  },
+  {
+    title:"Page of Ofertas Destacadas",
+    description:
+    "OD is a web application project designed to showcase a collection of promotional videos for featured products, along with links to Amazon for each product.",
+    github:"https://github.com/SrCidm/OD",
+    image:"/projects/OD.webp",
+    tags:[TAGS.PYTHON,TAGS.REFLEX],
+  },
+  {
+    title:"MeetHub",
+    description:
+    "MeetHub is a platform designed to facilitate the organization and management of business meetings and events. It offers features such as meeting scheduling, invitation management, calendar integration, and attendance tracking. Additionally, it provides tools for communication and collaboration among participants before, during, and after events. In summary, MeetHub is a comprehensive solution for optimizing the planning and execution of business meetings.",
+    github:"https://github.com/SrCidm/MeetHub-Meeting-page",
+    image:"/projects/mh.webp",
+    tags:[TAGS.JAVASCRIPT,TAGS.TAILWIND,TAGS.NEXT],
+  },
+  {
+    title:"My Weather App",
+    description:
+    "The code utilizes Svelte to display current and future weather data for a specific location. It defines functions to fetch weather data and CSS styles to design the interface. The HTML displays weather information and allows searching for new locations",
+    github:"https://github.com/SrCidm/my-Weather-App",
+    image:"/projects/mwapp.webp",
+    tags:[TAGS.JAVASCRIPT,TAGS.HTML],
+  },
+  {
+    title:"Crypto-Tracker",
+    description:
+    "This project is a desktop application developed in Python using the Tkinter library for the graphical user interface. The application, called Crypto Info App, allows users to retrieve information about cryptocurrencies using the CoinMarketCap API.",
+    github:"https://github.com/SrCidm/Crypto-Tracker",
+    image:"/projects/criptotracker.webp",
+    tags:[TAGS.PYTHON,TAGS.HTML],
+  }
+];
+---
+
+{
+  PROJECTS.map(({ title, description, image, tags, github }) => (
+    <article class="ml-7 mb-7 ">
+      <a href={github} target="_blank">
+      <h3 class="cursor-pointer text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+      <p class="cursor-pointer text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-2 flex-row">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`cursor-pointer inline-flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+            >
+            <tag.icon class="size-6" />
+            {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/10 size-auto"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${image}`}
+      />
+      </a>
+    </article>
+  ))
+}
