@@ -26,11 +26,11 @@ const translateUi = useTranslations(currentLang as keyof typeof languages);
 				target="_blank"
 				rel="noopener"
 				><Badge>{translateUi('badge.Available')}</Badge></a></h1>
-			<h2 class="text-xl lg:text-2xl opacity-75 text-wrap max-w-[700px]">
+			<h2 class="text-xl text-yellow-200 lg:text-2xl opacity-75 text-wrap max-w-[700px]">
 				{translateUi('index.subtitle')}
 			</h2>
 			<ul>
-				<nav class="flex gap-4 mt-8 flex-wrap">
+				<nav class="text-yellow-200 flex gap-4 mt-8 flex-wrap">
 					<SocialIcon href="https://github.com/SrCidm">
 						<GithubIcon class="size-4 md:size-6"/>Github
 					</SocialIcon>
