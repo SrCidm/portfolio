@@ -7,11 +7,6 @@ import Reflex from "./icons/ReflexIcon.astro";
 import CssIcon from "./icons/CssIcon.astro";
 import HTMLIcon from "./icons/HTMLIcon.astro";
 
-import { useTranslations } from '../i18n/utils';
-import {languages} from '../i18n/ui';
-const currentLang = Astro.currentLocale || "en";
-const translateUi = useTranslations(currentLang as keyof typeof languages);
-
 const TAGS = {
   NEXT: {
     name: "Next.js",
@@ -19,7 +14,7 @@ const TAGS = {
     icon: NextIcon,
   },
   TAILWIND: {
-    name: "Tailwind",
+    name: "Tailwind CSS",
     class: "bg-white text-[#73bcf6]",
     icon: Tailwind,
   },
@@ -51,42 +46,42 @@ const TAGS = {
 };
 const PROJECTS = [
   {
-    title: translateUi('projects.1.title'),
+    title: "Crypto Page",
     description:
-      translateUi('projects.1.description'),
+      "This project is a web application built with React.js and Material-UI for visualizing cryptocurrency data using the CryptoCompare API. It offers real-time price visualization, interactive historical charts, and a carousel showcasing trending cryptocurrencies.",
     link: "#",
     github: "https://github.com/SrCidm/crypto-pagev1",
     image: "/projects/svgp1.webp",
     tags: [TAGS.CSS,TAGS.JAVASCRIPT,TAGS.HTML],
   },
   {
-    title: translateUi('projects.2.title'),
+    title:"Page of Ofertas Destacadas",
     description:
-      translateUi('projects.2.description'),
+    "OD is a web application project designed to showcase a collection of promotional videos for featured products, along with links to Amazon for each product.",
     github:"https://github.com/SrCidm/OD",
     image:"/projects/OD.webp",
     tags:[TAGS.PYTHON,TAGS.REFLEX],
   },
   {
-    title: translateUi('projects.3.title'),
+    title:"MeetHub",
     description:
-      translateUi('projects.3.description'),
+    "MeetHub is a platform designed to facilitate the organization and management of business meetings and events. It offers features such as meeting scheduling, invitation management, calendar integration, and attendance tracking. Additionally, it provides tools for communication and collaboration among participants before, during, and after events. In summary, MeetHub is a comprehensive solution for optimizing the planning and execution of business meetings.",
     github:"https://github.com/SrCidm/MeetHub-Meeting-page",
     image:"/projects/mh.webp",
     tags:[TAGS.JAVASCRIPT,TAGS.TAILWIND,TAGS.NEXT],
   },
   {
-    title: translateUi('projects.4.title'),
+    title:"My Weather App",
     description:
-      translateUi('projects.4.description'),
+    "The code utilizes Svelte to display current and future weather data for a specific location. It defines functions to fetch weather data and CSS styles to design the interface. The HTML displays weather information and allows searching for new locations",
     github:"https://github.com/SrCidm/my-Weather-App",
     image:"/projects/mwapp.webp",
     tags:[TAGS.JAVASCRIPT,TAGS.HTML],
   },
   {
-    title: translateUi('projects.5.title'),
+    title:"Crypto-Tracker",
     description:
-      translateUi('projects.5.description'),
+    "This project is a desktop application developed in Python using the Tkinter library for the graphical user interface. The application, called Crypto Info App, allows users to retrieve information about cryptocurrencies using the CoinMarketCap API.",
     github:"https://github.com/SrCidm/Crypto-Tracker",
     image:"/projects/criptotracker.webp",
     tags:[TAGS.PYTHON,TAGS.HTML],

@@ -1,17 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SectionContainer from '../components/SectionContainer.astro'
-import Badge from "../components/Badge.astro"
-import GithubIcon from "../components/icons/GithubIcon.astro"
-import SocialIcon from "../components/SocialIcon.astro"
-import LinkedinIcon from "../components/icons/LinkedinIcon.astro"
-import MailIcon from "../components/icons/Mail.astro"
-import Experience from '../components/Experience.astro';
-import Briefcase from '../components/icons/Briefcase.astro'
-import Code from '../components/icons/Code.astro';
-import Projects from '../components/Projects.astro';
-import { useTranslations } from '../i18n/utils';
-import {languages} from '../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+import SectionContainer from '../../components/SectionContainer.astro'
+import Badge from "../../components/Badge.astro"
+import GithubIcon from "../../components/icons/GithubIcon.astro"
+import SocialIcon from "../../components/SocialIcon.astro"
+import LinkedinIcon from "../../components/icons/LinkedinIcon.astro"
+import MailIcon from "../../components/icons/Mail.astro"
+import Experience from '../../components/Experience.astro';
+import Briefcase from '../../components/icons/Briefcase.astro'
+import Code from '../../components/icons/Code.astro';
+import Projects from '../../components/Projects.astro';
+import { useTranslations } from '../../i18n/utils';
+import {languages} from '../../i18n/ui';
 
 
 const currentLang = Astro.currentLocale || "en";
@@ -61,3 +61,4 @@ const translateUi = useTranslations(currentLang as keyof typeof languages);
 		</SectionContainer>
 	</main>
 </Layout>
+

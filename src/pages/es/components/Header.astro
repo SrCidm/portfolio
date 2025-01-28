@@ -1,0 +1,17 @@
+---
+import { getRelativeUrl } from "astro:i18n"
+const currentLang = Astro.currentLocale;
+---
+
+<header class="flex justify-between items-center py-5 w-full xl:w-[1120px] mx-auto">
+    <img 
+    class="rounded-full size-20" 
+    src="https://avatars.githubusercontent.com/u/160346195?v=4" 
+    alt="Sergio Photo"
+    />
+    <nav class="flex flex-row gap-x-10 opacity-80">
+        <a class="cursor-pointer" href={getRelativeUrl(currentLang,"#experience")}>Experience</a>
+        <a class="cursor-pointer" href={getRelativeUrl(currentLang,"#projects")}>Projects</a>
+        <a class="cursor-pointer" href={getRelativeUrl(currentLang,"mailto:sergio.g.cid.m@gmail.com")}>Contact</a>
+    </nav>
+</header>

@@ -1,3 +1,14 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from '../i18n/utils';
+import {languages} from '../i18n/ui';
+
+
+const currentLang = Astro.currentLocale || "en";
+const baseUrl = getRelativeLocaleUrl(currentLang, "");
+const translateUi = useTranslations(currentLang as keyof typeof languages);
+---
+
 <header class="flex justify-between items-center py-5 w-full xl:w-[1120px] mx-auto">
     <img 
     class="rounded-full size-20" 
@@ -5,8 +16,21 @@
     alt="Sergio Photo"
     />
     <nav class="flex flex-row gap-x-10 opacity-80">
-        <a class="cursor-pointer" href="#experience">Experience</a>
-        <a class="cursor-pointer" href="#projects">Projects</a>
-        <a class="cursor-pointer" href="mailto:sergio.g.cid.m@gmail.com">Contact</a>
+        <a class="cursor-pointer" href={`${baseUrl}#experience`}>{translateUi('header.experience')}</a>
+        <a class="cursor-pointer" href={`${baseUrl}#projects`}>{translateUi('header.projects')}</a>
+        <a class="cursor-pointer" href={`mailto:sergio.g.cid.m@gmail.com`}>{translateUi('header.contact')}</a>
+        <select 
+        class="cursor-pointer bg-gray-950 text-white border border-gray-600 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onchange="window.location.href = this.value"
+    >
+        {Object.entries(languages).map(([key, value]) => {
+            const route = key === "en" ? "/" : `/${key}`;
+            return (
+                <option value={route} selected={key === currentLang} class="bg-gray-950 text-white">
+                    {value}
+                </option>
+            );
+        })}
+    </select>
     </nav>
 </header>

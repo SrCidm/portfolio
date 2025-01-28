@@ -1,6 +1,6 @@
 ---
-import { useTranslations } from '../i18n/utils';
-import {languages} from '../i18n/ui';
+import { useTranslations } from '../../../i18n/utils';
+import {languages} from '../../../i18n/ui';
 const currentLang = Astro.currentLocale || "en";
 const translateUi = useTranslations(currentLang as keyof typeof languages);
 
