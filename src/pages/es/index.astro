@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Experience from '../../components/Experience.astro';
+import Projects from '../../components/Projects.astro';
+import Contact from '../../components/Contact.astro';
+
+const lang = 'es';
+---
+
+<Layout 
+  title="Sergio Cid | Desarrollador Full-Stack" 
+  description="Sergio Cid - Desarrollador Full-Stack especializado en React, Next.js y tecnologías web modernas."
+  lang={lang}
+>
+  <Hero lang={lang} />
+  <Experience lang={lang} />
+  <Projects lang={lang} />
+  <Contact lang={lang} />
+</Layout>

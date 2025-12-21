@@ -1,0 +1,224 @@
+---
+import { getTranslations, type Language } from '../i18n';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = getTranslations(lang);
+
+const projects = [
+  {
+    title: 'Crypto Page',
+    description: lang === 'es'
+      ? 'Aplicación web para visualización de datos de criptomonedas en tiempo real con gráficos históricos interactivos y carrusel de tendencias.'
+      : 'Web application for real-time cryptocurrency data visualization with interactive historical charts and trending carousel.',
+    image: '/projects/crypto-page.webp',
+    technologies: ['React', 'JavaScript', 'Material-UI', 'API'],
+    github: 'https://github.com/SrCidm/crypto-pagev1',
+    live: null,
+  },
+  {
+    title: 'MeetHub',
+    description: lang === 'es'
+      ? 'Plataforma para organización y gestión de reuniones empresariales con programación, gestión de invitaciones e integración de calendario.'
+      : 'Platform for organizing and managing business meetings with scheduling, invitation management, and calendar integration.',
+    image: '/projects/meethub.webp',
+    technologies: ['Next.js', 'JavaScript', 'Tailwind'],
+    github: 'https://github.com/SrCidm/MeetHub-Meeting-page',
+    live: null,
+  },
+  {
+    title: 'My Weather App',
+    description: lang === 'es'
+      ? 'Aplicación del clima usando Svelte que muestra datos meteorológicos actuales y futuros con búsqueda de ubicación.'
+      : 'Weather application using Svelte displaying current and future weather data with location search functionality.',
+    image: '/projects/weather-app.webp',
+    technologies: ['Svelte', 'JavaScript', 'CSS', 'API'],
+    github: 'https://github.com/SrCidm/my-Weather-App',
+    live: null,
+  },
+  {
+    title: 'Crypto-Tracker',
+    description: lang === 'es'
+      ? 'Aplicación de escritorio en Python con Tkinter para obtener información de criptomonedas usando la API de CoinMarketCap.'
+      : 'Desktop application developed in Python with Tkinter to retrieve cryptocurrency information using the CoinMarketCap API.',
+    image: '/projects/crypto-tracker.webp',
+    technologies: ['Python', 'Tkinter', 'API'],
+    github: 'https://github.com/SrCidm/Crypto-Tracker',
+    live: null,
+  },
+  {
+    title: 'Ofertas Destacadas',
+    description: lang === 'es'
+      ? 'Plataforma web para mostrar videos promocionales de productos destacados con enlaces a Amazon.'
+      : 'Web platform showcasing promotional videos for featured products with Amazon links.',
+    image: '/projects/ofertas.webp',
+    technologies: ['Python', 'HTML', 'CSS'],
+    github: 'https://github.com/SrCidm/OD',
+    live: null,
+  },
+];
+
+// Get unique technologies for filters
+const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort();
+---
+
+<section id="projects" class="py-20 lg:py-32 bg-surface-darker/50 light:bg-gray-50/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="section-title">{t.projects.title}</h2>
+      <p class="section-subtitle mt-2">{t.projects.subtitle}</p>
+    </div>
+
+    <!-- Technology Filters -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12" id="filters">
+      <button 
+        class="filter-btn active"
+        data-filter="all"
+      >
+        {t.projects.filterAll}
+      </button>
+      {allTechnologies.map(tech => (
+        <button 
+          class="filter-btn"
+          data-filter={tech.toLowerCase()}
+        >
+          {tech}
+        </button>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+      {projects.map((project, index) => (
+        <article 
+          class="card group overflow-hidden project-card"
+          data-technologies={project.technologies.map(t => t.toLowerCase()).join(',')}
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <!-- Project Image Placeholder -->
+          <div class="aspect-video bg-gradient-to-br from-wine-900/20 to-surface-border light:from-wine-100 light:to-gray-200 rounded-lg mb-4 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="text-wine-700/50 light:text-wine-300 font-mono text-sm">{project.title}</span>
+            </div>
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-wine-700/0 group-hover:bg-wine-700/10 transition-colors duration-300"></div>
+          </div>
+
+          <!-- Project Info -->
+          <div class="space-y-3">
+            <h3 class="text-lg font-display font-semibold text-text-primary light:text-gray-900 group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
+              {project.title}
+            </h3>
+            
+            <p class="text-text-secondary light:text-gray-600 text-sm leading-relaxed line-clamp-3">
+              {project.description}
+            </p>
+
+            <!-- Technologies -->
+            <div class="flex flex-wrap gap-2">
+              {project.technologies.map(tech => (
+                <span class="tech-badge">{tech}</span>
+              ))}
+            </div>
+
+            <!-- Links -->
+            <div class="flex items-center gap-4 pt-2">
+              {project.github && (
+                <a 
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-sm text-text-muted light:text-gray-500 hover:text-wine-400 light:hover:text-wine-600 transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  {t.projects.viewCode}
+                </a>
+              )}
+              {project.live && (
+                <a 
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-sm text-text-muted light:text-gray-500 hover:text-wine-400 light:hover:text-wine-600 transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  {t.projects.viewLive}
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .filter-btn {
+    @apply px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
+           text-text-secondary bg-surface-card border border-surface-border
+           hover:text-wine-400 hover:border-wine-700/50;
+  }
+
+  .filter-btn.active {
+    @apply bg-wine-700 text-white border-wine-700;
+  }
+
+  .light .filter-btn {
+    @apply text-gray-600 bg-white border-gray-200 hover:text-wine-600 hover:border-wine-300;
+  }
+
+  .light .filter-btn.active {
+    @apply bg-wine-700 text-white border-wine-700;
+  }
+
+  .project-card {
+    @apply opacity-0 animate-slide-up;
+  }
+
+  .project-card.hidden-filter {
+    @apply hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const technologies = card.getAttribute('data-technologies')?.split(',') || [];
+          
+          if (filter === 'all' || technologies.includes(filter)) {
+            card.classList.remove('hidden-filter');
+          } else {
+            card.classList.add('hidden-filter');
+          }
+        });
+      });
+    });
+  });
+</script>

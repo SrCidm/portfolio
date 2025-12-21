@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+
+const lang = 'en';
+---
+
+<Layout title="Sergio Cid | Full-Stack Developer" lang={lang}>
+  <Hero lang={lang} />
+  <Experience lang={lang} />
+  <Projects lang={lang} />
+  <Contact lang={lang} />
+</Layout>

@@ -1,0 +1,121 @@
+---
+import { getTranslations, type Language } from '../i18n';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = getTranslations(lang);
+
+const experiences = [
+  {
+    date: 'Feb 2024 - 2025',
+    title: lang === 'es' ? 'Desarrollador Full Stack' : 'Full Stack Developer',
+    organization: 'University of Helsinki',
+    description: lang === 'es' 
+      ? 'Formación integral en desarrollo full-stack, cubriendo tecnologías frontend y backend. Proyectos prácticos construyendo aplicaciones web dinámicas y responsivas usando frameworks modernos, bases de datos y mejores prácticas.'
+      : 'Comprehensive training in full-stack development, covering both frontend and backend technologies. Hands-on projects building dynamic and responsive web applications using modern frameworks, databases, and best practices.',
+    type: 'education'
+  },
+  {
+    date: 'Dec 2024',
+    title: lang === 'es' ? 'Certificado de Desarrollador PHP' : 'Certificate of PHP Developer',
+    organization: 'Edutin Academy',
+    description: lang === 'es'
+      ? 'Desarrollador PHP certificado con conocimientos probados en la construcción de aplicaciones web dinámicas, seguras y eficientes.'
+      : 'Certified PHP Developer with proven knowledge in building dynamic, secure, and efficient web applications.',
+    type: 'certification'
+  },
+  {
+    date: 'Nov 2024',
+    title: lang === 'es' ? 'Certificado SQL' : 'SQL Certificate',
+    organization: 'Mimo',
+    description: lang === 'es'
+      ? 'Comprensión de los conceptos fundamentales de SQL para crear tablas y obtener información de datos escribiendo consultas sobre una o múltiples tablas.'
+      : 'Understanding of core SQL concepts to create tables and gain insights into data by writing queries over one or multiple tables.',
+    type: 'certification'
+  },
+  {
+    date: 'Jan 2024',
+    title: lang === 'es' ? 'Curso de Programación' : 'Programming Course',
+    organization: 'Programming University',
+    description: lang === 'es'
+      ? 'Formación integral en Java, JavaScript y Python. Fundamentos de programación: variables, tipos de datos, estructuras de control y funciones.'
+      : 'Comprehensive training in Java, JavaScript, and Python. Programming fundamentals: variables, data types, control structures, and functions.',
+    type: 'education'
+  },
+  {
+    date: 'Nov 2023',
+    title: lang === 'es' ? 'Blockchain, Criptomonedas y Smart Contracts' : 'Blockchain, Cryptocurrency & Smart Contracts',
+    organization: 'Online Course',
+    description: lang === 'es'
+      ? 'Comprensión fundamental de tecnología blockchain, principios de criptomonedas y creación de smart contracts. Introducción a Solidity y desarrollo de DApps.'
+      : 'Foundational understanding of blockchain technology, cryptocurrency principles, and smart contract creation. Introduction to Solidity and DApp development.',
+    type: 'certification'
+  },
+];
+---
+
+<section id="experience" class="py-20 lg:py-32">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="section-title">{t.experience.title}</h2>
+      <p class="section-subtitle mt-2">{t.experience.subtitle}</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-0 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-gradient-to-b from-wine-700 via-wine-700/50 to-transparent"></div>
+
+      <!-- Timeline items -->
+      <div class="space-y-12">
+        {experiences.map((exp, index) => (
+          <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <!-- Timeline dot -->
+            <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-wine-700 border-4 border-surface-dark light:border-white z-10"></div>
+            
+            <!-- Content card -->
+            <div class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+              <div class="card group">
+                <!-- Date badge -->
+                <div class="inline-flex items-center gap-2 mb-3">
+                  <span class="text-xs font-mono text-wine-400 bg-wine-900/30 light:bg-wine-50 px-2 py-1 rounded">
+                    {exp.date}
+                  </span>
+                  <span class={`text-xs px-2 py-1 rounded ${
+                    exp.type === 'education' 
+                      ? 'bg-blue-900/30 text-blue-400 light:bg-blue-50 light:text-blue-600' 
+                      : 'bg-green-900/30 text-green-400 light:bg-green-50 light:text-green-600'
+                  }`}>
+                    {exp.type === 'education' 
+                      ? (lang === 'es' ? 'Educación' : 'Education')
+                      : (lang === 'es' ? 'Certificación' : 'Certification')
+                    }
+                  </span>
+                </div>
+                
+                <!-- Title -->
+                <h3 class="text-lg font-display font-semibold text-text-primary light:text-gray-900 mb-1 group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
+                  {exp.title}
+                </h3>
+                
+                <!-- Organization -->
+                <p class="text-wine-400 light:text-wine-600 font-medium text-sm mb-3">
+                  {exp.organization}
+                </p>
+                
+                <!-- Description -->
+                <p class="text-text-secondary light:text-gray-600 text-sm leading-relaxed">
+                  {exp.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-surface-dark text-text-primary font-sans antialiased;
+    background-image: 
+      radial-gradient(ellipse at top, rgba(114, 47, 55, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(114, 47, 55, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  /* Light mode */
+  .light body {
+    @apply bg-white text-gray-900;
+    background-image: 
+      radial-gradient(ellipse at top, rgba(114, 47, 55, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(114, 47, 55, 0.04) 0%, transparent 40%);
+  }
+
+  ::selection {
+    @apply bg-wine-700 text-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-darker;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-wine-700 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-wine-600;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-wine-700 text-white font-medium rounded-lg 
+           transition-all duration-300 hover:bg-wine-600 hover:shadow-lg hover:shadow-wine-700/25
+           focus:outline-none focus:ring-2 focus:ring-wine-500 focus:ring-offset-2 focus:ring-offset-surface-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-wine-700/50 text-wine-400 font-medium rounded-lg 
+           transition-all duration-300 hover:bg-wine-700/10 hover:border-wine-600
+           focus:outline-none focus:ring-2 focus:ring-wine-500 focus:ring-offset-2 focus:ring-offset-surface-dark;
+  }
+
+  .light .btn-primary {
+    @apply focus:ring-offset-white;
+  }
+
+  .light .btn-secondary {
+    @apply text-wine-700 border-wine-300 hover:bg-wine-50 focus:ring-offset-white;
+  }
+
+  .card {
+    @apply bg-surface-card border border-surface-border rounded-xl p-6 
+           transition-all duration-300 hover:border-wine-700/30 hover:shadow-xl hover:shadow-wine-900/10;
+  }
+
+  .light .card {
+    @apply bg-white border-gray-200 hover:border-wine-300 hover:shadow-wine-200/30;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-display font-bold text-text-primary mb-2;
+  }
+
+  .light .section-title {
+    @apply text-gray-900;
+  }
+
+  .section-subtitle {
+    @apply text-text-secondary text-lg;
+  }
+
+  .light .section-subtitle {
+    @apply text-gray-600;
+  }
+
+  .tech-badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-mono font-medium 
+           bg-wine-900/30 text-wine-300 rounded-full border border-wine-800/50
+           transition-colors duration-200;
+  }
+
+  .light .tech-badge {
+    @apply bg-wine-50 text-wine-700 border-wine-200;
+  }
+
+  .nav-link {
+    @apply text-text-secondary hover:text-wine-400 transition-colors duration-200 font-medium;
+  }
+
+  .light .nav-link {
+    @apply text-gray-600 hover:text-wine-600;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-wine-400 to-wine-600 bg-clip-text text-transparent;
+  }
+
+  .light .gradient-text {
+    @apply from-wine-600 to-wine-800;
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
