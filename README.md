@@ -2,8 +2,6 @@
 
 A modern, minimalist portfolio built with Astro, Tailwind CSS, and TypeScript.
 
-![Portfolio Preview](preview.png)
-
 ## ✨ Features
 
 - **Dark/Light Mode** - Toggle between themes with preference persistence
@@ -113,5 +111,5 @@ MIT License - feel free to use this as a template for your own portfolio!
 
 **Sergio Gabriel Cid Martinez**
 - GitHub: [@SrCidm](https://github.com/SrCidm)
-- LinkedIn: [sergio-cid](https://linkedin.com/in/sergio-cid)
+- LinkedIn: [sergio-cid](https://www.linkedin.com/in/srcidm/)
 - Email: Sergio.g.cid.m@gmail.com
