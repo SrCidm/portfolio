@@ -13,15 +13,17 @@ const t = getTranslations(lang);
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl mx-auto text-center">
       <!-- Section Header -->
-      <h2 class="section-title">{t.contact.title}</h2>
-      <p class="section-subtitle mt-2 mb-12">{t.contact.subtitle}</p>
+      <div class="scroll-reveal">
+        <h2 class="section-title">{t.contact.title}</h2>
+        <p class="section-subtitle mt-2 mb-12">{t.contact.subtitle}</p>
+      </div>
 
       <!-- Contact Cards -->
       <div class="grid sm:grid-cols-2 gap-6">
         <!-- Email Card -->
         <a 
           href="mailto:Sergio.g.cid.m@gmail.com"
-          class="card group flex flex-col items-center text-center p-8"
+          class="card group flex flex-col items-center text-center p-8 scroll-reveal-left"
         >
           <div class="w-14 h-14 rounded-full bg-wine-900/30 light:bg-wine-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6 text-wine-400 light:text-wine-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +39,7 @@ const t = getTranslations(lang);
         </a>
 
         <!-- Social Card -->
-        <div class="card flex flex-col items-center text-center p-8">
+        <div class="card flex flex-col items-center text-center p-8 scroll-reveal-right">
           <div class="w-14 h-14 rounded-full bg-wine-900/30 light:bg-wine-50 flex items-center justify-center mb-4">
             <svg class="w-6 h-6 text-wine-400 light:text-wine-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -85,7 +87,7 @@ const t = getTranslations(lang);
       </div>
 
       <!-- CTA -->
-      <div class="mt-12">
+      <div class="mt-12 scroll-reveal delay-200">
         <a href="mailto:Sergio.g.cid.m@gmail.com" class="btn-primary">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

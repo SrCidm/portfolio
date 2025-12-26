@@ -131,3 +131,57 @@
     text-wrap: balance;
   }
 }
+
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal.delay-100 { transition-delay: 100ms; }
+.scroll-reveal.delay-200 { transition-delay: 200ms; }
+.scroll-reveal.delay-300 { transition-delay: 300ms; }
+.scroll-reveal.delay-400 { transition-delay: 400ms; }
+.scroll-reveal.delay-500 { transition-delay: 500ms; }
+
+/* Scroll reveal from left */
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scroll reveal from right */
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale reveal */
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}

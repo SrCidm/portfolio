@@ -15,7 +15,7 @@ const t = getTranslations(lang);
       <!-- Text Content -->
       <div class="space-y-6">
         <!-- Status Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-wine-900/30 light:bg-wine-50 border border-wine-700/50 light:border-wine-200 rounded-full animate-fade-in">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-wine-900/30 light:bg-wine-50 border border-wine-700/50 light:border-wine-200 rounded-full scroll-reveal">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -24,7 +24,7 @@ const t = getTranslations(lang);
         </div>
 
         <!-- Main Heading -->
-        <div class="space-y-2 animate-slide-up animate-delay-100">
+        <div class="space-y-2 scroll-reveal delay-100">
           <p class="text-text-secondary light:text-gray-600 text-lg font-medium">{t.hero.greeting}</p>
           <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-text-primary light:text-gray-900">
             {t.hero.name}
@@ -35,12 +35,12 @@ const t = getTranslations(lang);
         </div>
 
         <!-- Description -->
-        <p class="text-text-secondary light:text-gray-600 text-lg leading-relaxed max-w-xl animate-slide-up animate-delay-200">
+        <p class="text-text-secondary light:text-gray-600 text-lg leading-relaxed max-w-xl scroll-reveal delay-200">
           {t.hero.description}
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-wrap gap-4 animate-slide-up animate-delay-300">
+        <div class="flex flex-wrap gap-4 scroll-reveal delay-300">
           <a href="#projects" class="btn-primary">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -56,7 +56,7 @@ const t = getTranslations(lang);
         </div>
 
         <!-- Quick Links -->
-        <div class="flex items-center gap-6 pt-4 animate-slide-up animate-delay-400">
+        <div class="flex items-center gap-6 pt-4 scroll-reveal delay-400">
           <a 
             href="https://github.com/SrCidm" 
             target="_blank" 
@@ -92,13 +92,13 @@ const t = getTranslations(lang);
       </div>
 
       <!-- Visual Element -->
-      <div class="hidden lg:flex justify-center items-center animate-fade-in animate-delay-300">
+      <div class="hidden lg:flex justify-center items-center scroll-reveal delay-300">
         <div class="relative">
           <!-- Decorative elements -->
           <div class="absolute -inset-4 bg-gradient-to-r from-wine-700/20 to-wine-900/20 rounded-3xl blur-2xl"></div>
-          <div class="relative w-80 h-80 rounded-3xl bg-gradient-to-br from-surface-card to-surface-darker light:from-gray-100 light:to-white border border-surface-border light:border-gray-200 p-8 flex items-center justify-center">
+          <div class="relative w-80 h-96 rounded-3xl bg-gradient-to-br from-surface-card to-surface-darker light:from-gray-100 light:to-white border border-surface-border light:border-gray-200 p-6 flex flex-col justify-between">
             <!-- Code block decoration -->
-            <div class="font-mono text-sm space-y-2 text-left">
+            <div class="font-mono text-sm space-y-1 text-left">
               <p class="text-text-muted light:text-gray-400">
                 <span class="text-wine-400">const</span> <span class="text-text-primary light:text-gray-900">developer</span> = {'{'}
               </p>
@@ -112,11 +112,41 @@ const t = getTranslations(lang);
                 available: <span class="text-green-400">true</span>,
               </p>
               <p class="pl-4 text-text-secondary light:text-gray-600">
-                skills: [<span class="text-wine-300 light:text-wine-600">...</span>],
+                skills: [
+              </p>
+              <a href="#projects" data-filter="javascript" class="skill-link pl-8 text-wine-300 light:text-wine-600 hover:text-wine-100 light:hover:text-wine-800 cursor-pointer transition-colors block">
+                "JavaScript",
+              </a>
+              <a href="#projects" data-filter="python" class="skill-link pl-8 text-wine-300 light:text-wine-600 hover:text-wine-100 light:hover:text-wine-800 cursor-pointer transition-colors block">
+                "Python",
+              </a>
+              <a href="#projects" data-filter="react" class="skill-link pl-8 text-wine-300 light:text-wine-600 hover:text-wine-100 light:hover:text-wine-800 cursor-pointer transition-colors block">
+                "React/Next.js",
+              </a>
+              <a href="#projects" data-filter="node.js" class="skill-link pl-8 text-wine-300 light:text-wine-600 hover:text-wine-100 light:hover:text-wine-800 cursor-pointer transition-colors block">
+                "Node.js,"
+              </a>
+              <p class="pl-4 text-text-secondary light:text-gray-600">
+                <!-- See More Link -->
+                <a 
+                  href="#projects" 
+                  class="group flex items-center justify-center gap-2 mt-4 py-2 text-wine-400 hover:text-wine-300 light:text-wine-600 light:hover:text-wine-700 transition-colors"
+                >
+                  <span class="text-sm font-medium" data-i18n-hero="seeMore">
+                    {lang === 'es' ? 'Ver más...' : 'See more...'}
+                  </span>
+                  <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </a>
+              </div>
+              <p class="pl-4 text-text-secondary light:text-gray-600">
+                ],
+              </p>
               </p>
               <p class="text-text-muted light:text-gray-400">{'}'}</p>
             </div>
-          </div>
+            
           <!-- Floating badges -->
           <div class="absolute -top-4 -right-4 px-3 py-1.5 bg-surface-card light:bg-white border border-surface-border light:border-gray-200 rounded-lg shadow-lg">
             <span class="text-xs font-mono text-wine-400">React</span>
@@ -132,3 +162,16 @@ const t = getTranslations(lang);
     </div>
   </div>
 </section>
+
+<script>
+  // Skill links click handler - triggers filter in projects section
+  document.querySelectorAll('.skill-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const filter = (e.currentTarget as HTMLElement).dataset.filter;
+      if (filter) {
+        // Store filter in sessionStorage to apply after scroll
+        sessionStorage.setItem('projectFilter', filter);
+      }
+    });
+  });
+</script>

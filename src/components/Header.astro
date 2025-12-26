@@ -15,11 +15,13 @@ const otherLangPath = lang === 'en' ? '/es' : '/';
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href={lang === 'en' ? '/' : '/es'} class="flex items-center gap-2 group">
-        <span class="text-xl font-display font-bold text-text-primary light:text-gray-900">
-          SC<span class="text-wine-500">.</span>
-        </span>
-      </a>
+        <a href={lang === 'en' ? '/' : '/es'} class="flex items-center gap-2 group cursor-pointer">
+                  <img 
+                    src="https://avatars.githubusercontent.com/u/160346195?v=4" 
+                    alt="Sergio Cid Logo" 
+                    class="size-8 rounded-full object-cover border border-wine-500/20 transition-all duration-300 group-hover:scale-110 group-hover:border-wine-500"
+                  />
+              </a>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">

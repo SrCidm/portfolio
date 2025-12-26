@@ -43,6 +43,7 @@ const {
       document.documentElement.classList.toggle('dark', theme === 'dark');
     </script>
   </head>
+
   <body class="min-h-screen flex flex-col">
     <Header lang={lang} />
     
@@ -52,9 +53,8 @@ const {
     
     <Footer lang={lang} />
     
-    <!-- Theme & Language Toggle Scripts -->
+    <!-- Theme Toggle Script con View Transitions -->
     <script>
-      // Theme toggle
       function setTheme(theme: 'dark' | 'light') {
         localStorage.setItem('theme', theme);
         document.documentElement.classList.toggle('light', theme === 'light');
@@ -63,11 +63,110 @@ const {
 
       document.addEventListener('DOMContentLoaded', () => {
         const themeToggle = document.getElementById('theme-toggle');
-        themeToggle?.addEventListener('click', () => {
+        
+        themeToggle?.addEventListener('click', (event) => {
           const current = localStorage.getItem('theme') || 'dark';
-          setTheme(current === 'dark' ? 'light' : 'dark');
+          const newTheme = current === 'dark' ? 'light' : 'dark';
+          
+          // Si el navegador soporta View Transitions
+          if (document.startViewTransition) {
+            // Obtener posición del botón
+            const button = event.currentTarget as HTMLElement;
+            const rect = button.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            // Guardar las coordenadas en variables CSS
+            document.documentElement.style.setProperty('--circle-x', `${x}px`);
+            document.documentElement.style.setProperty('--circle-y', `${y}px`);
+            
+            document.startViewTransition(() => {
+              setTheme(newTheme);
+            });
+          } else {
+            // Sin efecto para navegadores antiguos
+            setTheme(newTheme);
+          }
         });
       });
     </script>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+      });
+    </script>
+
+    <!-- Project Filter from Skills Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Check if there's a filter to apply from skill links
+        const filterToApply = sessionStorage.getItem('projectFilter');
+        
+        if (filterToApply) {
+          // Wait a bit for the page to fully load and scroll to complete
+          setTimeout(() => {
+            const filterBtn = document.querySelector(`[data-filter="${filterToApply}"]`) as HTMLButtonElement;
+            if (filterBtn) {
+              filterBtn.click();
+            }
+            sessionStorage.removeItem('projectFilter');
+          }, 500);
+        }
+      });
+    </script>
   </body>
+
+  <style>
+    /* Timing functions para animación suave */
+    :root {
+      --expo-out: linear(
+        0 0%, 0.1684 2.66%, 0.3165 5.49%, 0.446 8.52%, 0.5581 11.78%, 0.6535 15.29%, 
+        0.7341 19.11%, 0.8011 23.3%, 0.8557 27.93%, 0.8962 32.68%, 0.9283 38.01%, 
+        0.9529 44.08%, 0.9711 51.14%, 0.9833 59.06%, 0.9915 68.74%, 1 100%
+      );
+    }
+
+    /* View Transitions API - Circle Reveal desde botón arriba a la derecha */
+    ::view-transition-group(root) {
+      animation-timing-function: var(--expo-out);
+    }
+
+    ::view-transition-old(root) {
+      animation: none;
+      animation-fill-mode: both;
+      z-index: -1;
+    }
+
+    ::view-transition-new(root) {
+      mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="35" cy="5" r="18" fill="white" filter="url(%23blur)"/></svg>') top right / 0 no-repeat;
+      animation: scaleCircle 1s;
+      animation-fill-mode: both;
+    }
+
+    .dark::view-transition-new(root) {
+      animation: scaleCircle 1s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes scaleCircle {
+      to {
+        mask-size: 200vmax;
+      }
+    }
+  </style>
 </html>

@@ -60,7 +60,7 @@ const experiences = [
 <section id="experience" class="py-20 lg:py-32">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-16 scroll-reveal">
       <h2 class="section-title">{t.experience.title}</h2>
       <p class="section-subtitle mt-2">{t.experience.subtitle}</p>
     </div>
@@ -78,7 +78,7 @@ const experiences = [
             <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-wine-700 border-4 border-surface-dark light:border-white z-10"></div>
             
             <!-- Content card -->
-            <div class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+            <div class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} ${index % 2 === 0 ? 'scroll-reveal-left' : 'scroll-reveal-right'}`} style={`transition-delay: ${index * 100}ms`}>
               <div class="card group">
                 <!-- Date badge -->
                 <div class="inline-flex items-center gap-2 mb-3">

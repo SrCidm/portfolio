@@ -68,13 +68,13 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
 <section id="projects" class="py-20 lg:py-32 bg-surface-darker/50 light:bg-gray-50/50">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-12">
+    <div class="text-center mb-12 scroll-reveal">
       <h2 class="section-title">{t.projects.title}</h2>
       <p class="section-subtitle mt-2">{t.projects.subtitle}</p>
     </div>
 
     <!-- Technology Filters -->
-    <div class="flex flex-wrap justify-center gap-2 mb-12" id="filters">
+    <div class="flex flex-wrap justify-center gap-2 mb-12 scroll-reveal delay-100" id="filters">
       <button 
         class="filter-btn active"
         data-filter="all"
@@ -95,9 +95,9 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
       {projects.map((project, index) => (
         <article 
-          class="card group overflow-hidden project-card"
+          class="card group overflow-hidden project-card scroll-reveal-scale"
           data-technologies={project.technologies.map(t => t.toLowerCase()).join(',')}
-          style={`animation-delay: ${index * 100}ms`}
+          style={`transition-delay: ${index * 100}ms`}
         >
           <!-- Project Image Placeholder -->
           <div class="aspect-video bg-gradient-to-br from-wine-900/20 to-surface-border light:from-wine-100 light:to-gray-200 rounded-lg mb-4 overflow-hidden relative">
@@ -178,10 +178,6 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
 
   .light .filter-btn.active {
     @apply bg-wine-700 text-white border-wine-700;
-  }
-
-  .project-card {
-    @apply opacity-0 animate-slide-up;
   }
 
   .project-card.hidden-filter {
