@@ -189,3 +189,49 @@
   opacity: 1;
   transform: scale(1);
 }
+
+.light .code-block-box {
+  box-shadow: 
+    0 0 50px rgba(114, 47, 55, 0.3),
+    0 0 80px rgba(114, 47, 55, 0.15);
+}
+
+/* Floating animation for code block box */
+.code-block-box {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Floating badges with different delays */
+.floating-badge {
+  animation: floatBadge 5s ease-in-out infinite;
+}
+
+.floating-badge-1 {
+  animation-delay: 0s;
+}
+
+.floating-badge-2 {
+  animation-delay: -1.5s;
+}
+
+.floating-badge-3 {
+  animation-delay: -3s;
+}
+
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
