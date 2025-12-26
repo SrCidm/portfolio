@@ -16,7 +16,8 @@ const experiences = [
     description: lang === 'es' 
       ? 'Formación integral en desarrollo full-stack, cubriendo tecnologías frontend y backend. Proyectos prácticos construyendo aplicaciones web dinámicas y responsivas usando frameworks modernos, bases de datos y mejores prácticas.'
       : 'Comprehensive training in full-stack development, covering both frontend and backend technologies. Hands-on projects building dynamic and responsive web applications using modern frameworks, databases, and best practices.',
-    type: 'education'
+    type: 'education',
+    certificate: '/images/certificates/Chelsinkip5.webp'
   },
   {
     date: 'Dec 2024',
@@ -25,7 +26,8 @@ const experiences = [
     description: lang === 'es'
       ? 'Desarrollador PHP certificado con conocimientos probados en la construcción de aplicaciones web dinámicas, seguras y eficientes.'
       : 'Certified PHP Developer with proven knowledge in building dynamic, secure, and efficient web applications.',
-    type: 'certification'
+    type: 'certification',
+    certificate: '/images/certificates/certificadoPHP.webp'
   },
   {
     date: 'Nov 2024',
@@ -34,7 +36,8 @@ const experiences = [
     description: lang === 'es'
       ? 'Comprensión de los conceptos fundamentales de SQL para crear tablas y obtener información de datos escribiendo consultas sobre una o múltiples tablas.'
       : 'Understanding of core SQL concepts to create tables and gain insights into data by writing queries over one or multiple tables.',
-    type: 'certification'
+    type: 'certification',
+    certificate: '/images/certificates/certificado-SQLmimo-1.webp'
   },
   {
     date: 'Jan 2024',
@@ -43,7 +46,8 @@ const experiences = [
     description: lang === 'es'
       ? 'Formación integral en Java, JavaScript y Python. Fundamentos de programación: variables, tipos de datos, estructuras de control y funciones.'
       : 'Comprehensive training in Java, JavaScript, and Python. Programming fundamentals: variables, data types, control structures, and functions.',
-    type: 'education'
+    type: 'education',
+    certificate: '/images/certificates/CProgram.webp'
   },
   {
     date: 'Nov 2023',
@@ -52,9 +56,13 @@ const experiences = [
     description: lang === 'es'
       ? 'Comprensión fundamental de tecnología blockchain, principios de criptomonedas y creación de smart contracts. Introducción a Solidity y desarrollo de DApps.'
       : 'Foundational understanding of blockchain technology, cryptocurrency principles, and smart contract creation. Introduction to Solidity and DApp development.',
-    type: 'certification'
+    type: 'certification',
+    certificate: '/images/certificates/CBlockchain.webp'
   },
 ];
+
+const viewCertificateText = lang === 'es' ? 'Ver certificado' : 'View certificate';
+const closeText = lang === 'es' ? 'Cerrar' : 'Close';
 ---
 
 <section id="experience" class="py-20 lg:py-32">
@@ -80,25 +88,45 @@ const experiences = [
             <!-- Content card -->
             <div class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} ${index % 2 === 0 ? 'scroll-reveal-left' : 'scroll-reveal-right'}`} style={`transition-delay: ${index * 100}ms`}>
               <div class="card group">
-                <!-- Date badge -->
-                <div class="inline-flex items-center gap-2 mb-3">
-                  <span class="text-xs font-mono text-wine-400 bg-wine-900/30 light:bg-wine-50 px-2 py-1 rounded">
-                    {exp.date}
-                  </span>
-                  <span class={`text-xs px-2 py-1 rounded ${
-                    exp.type === 'education' 
-                      ? 'bg-blue-900/30 text-blue-400 light:bg-blue-50 light:text-blue-600' 
-                      : 'bg-green-900/30 text-green-400 light:bg-green-50 light:text-green-600'
-                  }`}>
-                    {exp.type === 'education' 
-                      ? (lang === 'es' ? 'Educación' : 'Education')
-                      : (lang === 'es' ? 'Certificación' : 'Certification')
-                    }
-                  </span>
+                <!-- Date badge & Certificate button -->
+                <div class="flex items-center justify-between mb-3">
+                  <div class="inline-flex items-center gap-2">
+                    <span class="text-xs font-mono text-wine-400 bg-wine-900/30 light:bg-wine-50 px-2 py-1 rounded">
+                      {exp.date}
+                    </span>
+                    <span class={`text-xs px-2 py-1 rounded ${
+                      exp.type === 'education' 
+                        ? 'bg-blue-900/30 text-blue-400 light:bg-blue-50 light:text-blue-600' 
+                        : 'bg-green-900/30 text-green-400 light:bg-green-50 light:text-green-600'
+                    }`}>
+                      {exp.type === 'education' 
+                        ? (lang === 'es' ? 'Educación' : 'Education')
+                        : (lang === 'es' ? 'Certificación' : 'Certification')
+                      }
+                    </span>
+                  </div>
+                  
+                  <!-- Certificate Button -->
+                  {exp.certificate && (
+                    <button 
+                      class="certificate-btn p-2 rounded-lg bg-wine-900/30 light:bg-wine-50 text-wine-400 light:text-wine-600 hover:bg-wine-700 hover:text-white transition-all group/cert relative"
+                      data-certificate={exp.certificate}
+                      data-title={exp.title}
+                      aria-label={viewCertificateText}
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                      <!-- Tooltip -->
+                      <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs font-medium text-white bg-gray-900 rounded whitespace-nowrap opacity-0 group-hover/cert:opacity-100 transition-opacity pointer-events-none">
+                        {viewCertificateText}
+                      </span>
+                    </button>
+                  )}
                 </div>
                 
                 <!-- Title -->
-                <h3 class="text-lg font-display font-semibold text-text-primary light:text-gray-900 mb-1 group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
+                <h3 class="text-lg font-display font-semibold text-text-primary mb-1 group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
                   {exp.title}
                 </h3>
                 
@@ -119,3 +147,103 @@ const experiences = [
     </div>
   </div>
 </section>
+
+<!-- Certificate Modal -->
+<div id="certificate-modal" class="fixed inset-0 z-50 hidden">
+  <!-- Backdrop -->
+  <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+  
+  <!-- Modal Content -->
+  <div class="relative flex items-center justify-center min-h-screen p-4">
+    <div class="relative max-w-4xl w-full animate-scale-in">
+      <!-- Close Button -->
+      <button 
+        id="modal-close" 
+        class="absolute -top-12 right-0 flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+      >
+        <span class="text-sm">{closeText}</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <!-- Certificate Title -->
+      <h3 id="modal-title" class="text-white text-lg font-display font-semibold mb-4 text-center"></h3>
+      
+      <!-- Certificate Image -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-2xl">
+        <img 
+          id="modal-image" 
+          src="" 
+          alt="Certificate" 
+          class="w-full h-auto"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out forwards;
+  }
+  
+  #certificate-modal.active {
+    display: block;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('certificate-modal');
+    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+    const modalTitle = document.getElementById('modal-title');
+    const modalClose = document.getElementById('modal-close');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const certificateBtns = document.querySelectorAll('.certificate-btn');
+
+    // Open modal
+    certificateBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const certificate = btn.getAttribute('data-certificate');
+        const title = btn.getAttribute('data-title');
+        
+        if (certificate && modalImage && modalTitle && modal) {
+          modalImage.src = certificate;
+          modalTitle.textContent = title || '';
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close modal functions
+    const closeModal = () => {
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    };
+
+    modalClose?.addEventListener('click', closeModal);
+    modalBackdrop?.addEventListener('click', closeModal);
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  });
+</script>

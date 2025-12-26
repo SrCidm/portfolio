@@ -14,7 +14,7 @@ const projects = [
     description: lang === 'es'
       ? 'Aplicación web para visualización de datos de criptomonedas en tiempo real con gráficos históricos interactivos y carrusel de tendencias.'
       : 'Web application for real-time cryptocurrency data visualization with interactive historical charts and trending carousel.',
-    image: '/projects/crypto-page.webp',
+    image: '/images/projects/svgp1.webp',
     technologies: ['React', 'JavaScript', 'Material-UI', 'API'],
     github: 'https://github.com/SrCidm/crypto-pagev1',
     live: null,
@@ -24,7 +24,7 @@ const projects = [
     description: lang === 'es'
       ? 'Plataforma para organización y gestión de reuniones empresariales con programación, gestión de invitaciones e integración de calendario.'
       : 'Platform for organizing and managing business meetings with scheduling, invitation management, and calendar integration.',
-    image: '/projects/meethub.webp',
+    image: '/images/projects/mh.webp',
     technologies: ['Next.js', 'JavaScript', 'Tailwind'],
     github: 'https://github.com/SrCidm/MeetHub-Meeting-page',
     live: null,
@@ -34,7 +34,7 @@ const projects = [
     description: lang === 'es'
       ? 'Aplicación del clima usando Svelte que muestra datos meteorológicos actuales y futuros con búsqueda de ubicación.'
       : 'Weather application using Svelte displaying current and future weather data with location search functionality.',
-    image: '/projects/weather-app.webp',
+    image: '/images/projects/mwapp.webp',
     technologies: ['Svelte', 'JavaScript', 'CSS', 'API'],
     github: 'https://github.com/SrCidm/my-Weather-App',
     live: null,
@@ -44,7 +44,7 @@ const projects = [
     description: lang === 'es'
       ? 'Aplicación de escritorio en Python con Tkinter para obtener información de criptomonedas usando la API de CoinMarketCap.'
       : 'Desktop application developed in Python with Tkinter to retrieve cryptocurrency information using the CoinMarketCap API.',
-    image: '/projects/crypto-tracker.webp',
+    image: '/images/projects/criptotracker.webp',
     technologies: ['Python', 'Tkinter', 'API'],
     github: 'https://github.com/SrCidm/Crypto-Tracker',
     live: null,
@@ -54,15 +54,19 @@ const projects = [
     description: lang === 'es'
       ? 'Plataforma web para mostrar videos promocionales de productos destacados con enlaces a Amazon.'
       : 'Web platform showcasing promotional videos for featured products with Amazon links.',
-    image: '/projects/ofertas.webp',
+    image: '/images/projects/OD.webp',
     technologies: ['Python', 'HTML', 'CSS'],
     github: 'https://github.com/SrCidm/OD',
-    live: null,
+    live: 'https://ofertasdestacadas.netlify.app/',
   },
 ];
 
-// Get unique technologies for filters
 const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort();
+const zoomInText = lang === 'es' ? 'Acercar' : 'Zoom in';
+const zoomOutText = lang === 'es' ? 'Alejar' : 'Zoom out';
+const resetText = lang === 'es' ? 'Restablecer' : 'Reset';
+const closeText = lang === 'es' ? 'Cerrar' : 'Close';
+const dragHint = lang === 'es' ? 'Usa la rueda del mouse o los botones para hacer zoom. Arrastra para mover.' : 'Use mouse wheel or buttons to zoom. Drag to move.';
 ---
 
 <section id="projects" class="py-20 lg:py-32 bg-surface-darker/50 light:bg-gray-50/50">
@@ -75,17 +79,11 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
 
     <!-- Technology Filters -->
     <div class="flex flex-wrap justify-center gap-2 mb-12 scroll-reveal delay-100" id="filters">
-      <button 
-        class="filter-btn active"
-        data-filter="all"
-      >
+      <button class="filter-btn active" data-filter="all">
         {t.projects.filterAll}
       </button>
       {allTechnologies.map(tech => (
-        <button 
-          class="filter-btn"
-          data-filter={tech.toLowerCase()}
-        >
+        <button class="filter-btn" data-filter={tech.toLowerCase()}>
           {tech}
         </button>
       ))}
@@ -99,18 +97,31 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
           data-technologies={project.technologies.map(t => t.toLowerCase()).join(',')}
           style={`transition-delay: ${index * 100}ms`}
         >
-          <!-- Project Image Placeholder -->
-          <div class="aspect-video bg-gradient-to-br from-wine-900/20 to-surface-border light:from-wine-100 light:to-gray-200 rounded-lg mb-4 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <span class="text-wine-700/50 light:text-wine-300 font-mono text-sm">{project.title}</span>
+          <!-- Project Image -->
+          <div 
+            class="aspect-video bg-gradient-to-br from-wine-900/20 to-surface-border light:from-wine-100 light:to-gray-200 rounded-lg mb-4 overflow-hidden relative cursor-pointer project-image-btn"
+            data-image={project.image}
+            data-title={project.title}
+          >
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <!-- Hover overlay with icon -->
+            <div class="absolute inset-0 bg-wine-700/0 group-hover:bg-wine-700/30 transition-all duration-300 flex items-center justify-center">
+              <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
             </div>
-            <!-- Hover overlay -->
-            <div class="absolute inset-0 bg-wine-700/0 group-hover:bg-wine-700/10 transition-colors duration-300"></div>
           </div>
 
           <!-- Project Info -->
           <div class="space-y-3">
-            <h3 class="text-lg font-display font-semibold text-text-primary light:text-gray-900 group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
+            <h3 class="text-lg font-display font-semibold text-text-primary group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
               {project.title}
             </h3>
             
@@ -161,6 +172,105 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
   </div>
 </section>
 
+<!-- Project Image Modal with Zoom -->
+<div id="project-modal" class="fixed inset-0 z-50 hidden">
+  <!-- Backdrop -->
+  <div id="project-modal-backdrop" class="absolute inset-0 bg-black/90"></div>
+  
+  <!-- Modal Content -->
+  <div class="relative flex flex-col h-full">
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between p-4 text-white z-10">
+      <!-- Title -->
+      <h3 id="project-modal-title" class="text-lg font-display font-semibold"></h3>
+      
+      <!-- Controls -->
+      <div class="flex items-center gap-2">
+        <!-- Zoom Controls -->
+        <div class="hidden sm:flex items-center gap-1 bg-white/10 rounded-lg p-1">
+          <button 
+            id="zoom-out-btn"
+            class="p-2 hover:bg-white/20 rounded-lg transition-colors"
+            title={zoomOutText}
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
+            </svg>
+          </button>
+          <span id="zoom-level" class="text-sm min-w-[3rem] text-center">100%</span>
+          <button 
+            id="zoom-in-btn"
+            class="p-2 hover:bg-white/20 rounded-lg transition-colors"
+            title={zoomInText}
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+            </svg>
+          </button>
+          <button 
+            id="zoom-reset-btn"
+            class="p-2 hover:bg-white/20 rounded-lg transition-colors"
+            title={resetText}
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Close Button -->
+        <button 
+          id="project-modal-close" 
+          class="p-2 hover:bg-white/20 rounded-lg transition-colors"
+          title={closeText}
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Hint text -->
+    <p class="hidden sm:block text-white/50 text-xs text-center pb-2">{dragHint}</p>
+    
+    <!-- Image Container -->
+    <div 
+      id="image-container" 
+      class="flex-1 overflow-hidden cursor-grab active:cursor-grabbing flex items-center justify-center"
+    >
+      <img 
+        id="project-modal-image" 
+        src="" 
+        alt="Project" 
+        class="max-w-none transition-transform duration-100 select-none"
+        draggable="false"
+      />
+    </div>
+    
+    <!-- Mobile Zoom Controls -->
+    <div class="sm:hidden flex items-center justify-center gap-4 p-4 bg-black/50">
+      <button 
+        id="zoom-out-btn-mobile"
+        class="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+      >
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+        </svg>
+      </button>
+      <span id="zoom-level-mobile" class="text-white text-sm min-w-[3rem] text-center">100%</span>
+      <button 
+        id="zoom-in-btn-mobile"
+        class="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+      >
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
 <style>
   .filter-btn {
     @apply px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
@@ -190,16 +300,24 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  #project-modal.active {
+    display: block;
+  }
+
+  #project-modal-image {
+    touch-action: none;
+  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Filter functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Update active state
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
@@ -215,6 +333,206 @@ const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort
           }
         });
       });
+    });
+
+    // Modal & Zoom functionality
+    const modal = document.getElementById('project-modal');
+    const modalImage = document.getElementById('project-modal-image') as HTMLImageElement;
+    const modalTitle = document.getElementById('project-modal-title');
+    const modalClose = document.getElementById('project-modal-close');
+    const modalBackdrop = document.getElementById('project-modal-backdrop');
+    const imageContainer = document.getElementById('image-container');
+    const imageBtns = document.querySelectorAll('.project-image-btn');
+    
+    // Zoom controls
+    const zoomInBtn = document.getElementById('zoom-in-btn');
+    const zoomOutBtn = document.getElementById('zoom-out-btn');
+    const zoomResetBtn = document.getElementById('zoom-reset-btn');
+    const zoomLevel = document.getElementById('zoom-level');
+    const zoomInBtnMobile = document.getElementById('zoom-in-btn-mobile');
+    const zoomOutBtnMobile = document.getElementById('zoom-out-btn-mobile');
+    const zoomLevelMobile = document.getElementById('zoom-level-mobile');
+
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    const MIN_SCALE = 0.5;
+    const MAX_SCALE = 4;
+    const SCALE_STEP = 0.25;
+
+    function updateTransform() {
+      if (modalImage) {
+        modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+    }
+
+    function updateZoomDisplay() {
+      const percent = Math.round(scale * 100) + '%';
+      if (zoomLevel) zoomLevel.textContent = percent;
+      if (zoomLevelMobile) zoomLevelMobile.textContent = percent;
+    }
+
+    function resetZoom() {
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      updateTransform();
+      updateZoomDisplay();
+    }
+
+    function zoomIn() {
+      if (scale < MAX_SCALE) {
+        scale = Math.min(scale + SCALE_STEP, MAX_SCALE);
+        updateTransform();
+        updateZoomDisplay();
+      }
+    }
+
+    function zoomOut() {
+      if (scale > MIN_SCALE) {
+        scale = Math.max(scale - SCALE_STEP, MIN_SCALE);
+        // Reset position if zooming out to fit
+        if (scale <= 1) {
+          translateX = 0;
+          translateY = 0;
+        }
+        updateTransform();
+        updateZoomDisplay();
+      }
+    }
+
+    // Mouse wheel zoom
+    imageContainer?.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    }, { passive: false });
+
+    // Drag to pan
+    imageContainer?.addEventListener('mousedown', (e) => {
+      if (scale > 1) {
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        imageContainer.style.cursor = 'grabbing';
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      if (imageContainer) imageContainer.style.cursor = scale > 1 ? 'grab' : 'default';
+    });
+
+    // Touch support for mobile
+    let lastTouchDistance = 0;
+    let lastTouchX = 0;
+    let lastTouchY = 0;
+
+    imageContainer?.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        // Pinch zoom start
+        lastTouchDistance = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      } else if (e.touches.length === 1 && scale > 1) {
+        // Pan start
+        isDragging = true;
+        lastTouchX = e.touches[0].clientX - translateX;
+        lastTouchY = e.touches[0].clientY - translateY;
+      }
+    }, { passive: true });
+
+    imageContainer?.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 2) {
+        // Pinch zoom
+        const distance = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        
+        if (lastTouchDistance > 0) {
+          const delta = distance - lastTouchDistance;
+          if (delta > 0 && scale < MAX_SCALE) {
+            scale = Math.min(scale + 0.02, MAX_SCALE);
+          } else if (delta < 0 && scale > MIN_SCALE) {
+            scale = Math.max(scale - 0.02, MIN_SCALE);
+          }
+          updateTransform();
+          updateZoomDisplay();
+        }
+        
+        lastTouchDistance = distance;
+      } else if (e.touches.length === 1 && isDragging) {
+        // Pan
+        translateX = e.touches[0].clientX - lastTouchX;
+        translateY = e.touches[0].clientY - lastTouchY;
+        updateTransform();
+      }
+    }, { passive: true });
+
+    imageContainer?.addEventListener('touchend', () => {
+      isDragging = false;
+      lastTouchDistance = 0;
+    });
+
+    // Button controls
+    zoomInBtn?.addEventListener('click', zoomIn);
+    zoomOutBtn?.addEventListener('click', zoomOut);
+    zoomResetBtn?.addEventListener('click', resetZoom);
+    zoomInBtnMobile?.addEventListener('click', zoomIn);
+    zoomOutBtnMobile?.addEventListener('click', zoomOut);
+
+    // Open modal
+    imageBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const image = btn.getAttribute('data-image');
+        const title = btn.getAttribute('data-title');
+        
+        if (image && modalImage && modalTitle && modal) {
+          resetZoom();
+          modalImage.src = image;
+          modalTitle.textContent = title || '';
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close modal
+    const closeModal = () => {
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        resetZoom();
+      }
+    };
+
+    modalClose?.addEventListener('click', closeModal);
+    modalBackdrop?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+      if (modal?.classList.contains('active')) {
+        if (e.key === '+' || e.key === '=') zoomIn();
+        if (e.key === '-') zoomOut();
+        if (e.key === '0') resetZoom();
+      }
     });
   });
 </script>
