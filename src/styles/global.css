@@ -120,6 +120,10 @@
   }
 }
 
+.light .text-text-primary {
+  color: #111827 !important; /* gray-900 */
+}
+
 @layer utilities {
   .animate-delay-100 { animation-delay: 100ms; }
   .animate-delay-200 { animation-delay: 200ms; }
