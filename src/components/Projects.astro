@@ -10,7 +10,37 @@ const t = getTranslations(lang);
 
 const projects = [
   {
-    title: 'Crypto Page',
+    title: 'Portfolio de Artista',
+    description: lang === 'es'
+      ? 'Portfolio web bilingüe para artista contemporáneo especializado en arte cinético y esculturas lumínicas. Incluye hero animado con 25 frames stop-motion usando Canvas API nativo, galería lightbox con 67 obras, y sistema i18n personalizado. Optimizado con Astro SSG para máxima performance.'
+      : 'Bilingual portfolio website for contemporary artist specializing in kinetic art and light sculptures. Features animated hero with 25-frame stop-motion using native Canvas API, lightbox gallery with 67 artworks, and custom i18n system. Optimized with Astro SSG for maximum performance.',
+    image: '/images/projects/Ricardopage.webp',
+    technologies: ['Astro', 'TypeScript', 'Tailwind CSS', 'Canvas API', 'Web3Forms'],
+    github: 'https://github.com/SrCidm/web-ricardo-laverde',
+    live: 'https://ricardolaverde.vercel.app/',
+  },
+  {
+    title: 'Ofertas Destacadas Page',
+    description: lang === 'es'
+      ? 'Una web moderna de productos de afiliado de Amazon, construida con Astro para máximo rendimiento y SEO.'
+      : 'A modern Amazon affiliate website built with Astro for maximum performance and SEO.',
+    image: '/images/projects/OD2.webp',
+    technologies: ['Astro', 'TypeScript',],
+    github: 'https://github.com/SrCidm/OD',
+    live: 'https://ofertasdestacadas.netlify.app/',
+  },
+    {
+      title: 'Pokémon Battle Simulator',
+    description: lang === 'es'
+      ? 'Este proyecto utiliza PyQt5 para crear una interfaz gráfica de usuario (GUI) que permite buscar Pokémon, ver sus estadísticas y simular batallas entre ellos. La aplicación aprovecha la PokéAPI para obtener datos y ofrece una forma divertida e interactiva de explorar el universo Pokémon.'
+      : 'This project uses PyQt5 to create a graphical user interface (GUI) that allows you to search for Pokémon, view their stats, and simulate battles between two Pokémon. The application leverages the PokéAPI to fetch Pokémon data and provides a fun and interactive way to explore the Pokémon universe.',
+    image: '/images/projects/pokemonBattle.webp',
+    technologies: ['Python', 'API'],
+    github: 'https://github.com/SrCidm/crypto-pagev1',
+    live: null,
+  },
+  {
+      title: 'Crypto Page',
     description: lang === 'es'
       ? 'Aplicación web para visualización de datos de criptomonedas en tiempo real con gráficos históricos interactivos y carrusel de tendencias.'
       : 'Web application for real-time cryptocurrency data visualization with interactive historical charts and trending carousel.',
@@ -57,7 +87,7 @@ const projects = [
     image: '/images/projects/OD.webp',
     technologies: ['Python', 'HTML', 'CSS'],
     github: 'https://github.com/SrCidm/OD',
-    live: 'https://ofertasdestacadas.netlify.app/',
+    live: null
   },
 ];
 
