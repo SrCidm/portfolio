@@ -10,6 +10,16 @@ const t = getTranslations(lang);
 
 const projects = [
   {
+    title: 'CHIGUI',
+    description: lang === 'es'
+      ? 'CHIGUI — Aplicación PWA de aprendizaje de español impulsada por IA. Tutor conversacional con voz, reconocimiento de imágenes y aprendizaje adaptativo. Full‑stack: Next.js 14 (frontend), FastAPI (backend), Firebase para auth y almacenamiento, e integración con Gemini AI para generación de respuestas y voz. Soporta modo offline como PWA y está optimizada para móviles.'
+      : 'CHIGUI — AI-powered Spanish learning PWA. Conversational tutor with voice, image recognition and adaptive learning. Full‑stack: Next.js 14 (frontend), FastAPI (backend), Firebase for auth/storage, and Gemini AI for generation and voice. PWA-enabled and mobile-optimized.',
+    image: '/images/projects/chigui.webp',
+    technologies: ['Next.js', 'FastAPI', 'TypeScript', 'Python', 'Firebase', 'Gemini AI', 'PWA', 'Vercel'],
+    github: 'https://github.com/SrCidm/chigui',
+    live: 'https://chigui-app.web.app/',
+  },
+  {
     title: 'Portfolio de Artista',
     description: lang === 'es'
       ? 'Portfolio web bilingüe para artista contemporáneo especializado en arte cinético y esculturas lumínicas. Incluye hero animado con 25 frames stop-motion usando Canvas API nativo, galería lightbox con 67 obras, y sistema i18n personalizado. Optimizado con Astro SSG para máxima performance.'
@@ -493,7 +503,7 @@ const dragHint = lang === 'es' ? 'Usa la rueda del mouse o los botones para hace
         // Pinch zoom
         const distance = Math.hypot(
           e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.touches[1].clientY
+          e.touches[0].clientY - e.tches[1].clientY
         );
         
         if (lastTouchDistance > 0) {
