@@ -23,7 +23,9 @@ export const es = {
     subtitle: 'Una selección de mis trabajos recientes',
     filterAll: 'Todos',
     viewCode: 'Ver Código',
-    viewLive: 'Demo',
+    viewLive: 'Demo en Vivo',
+    readMore: 'Leer más',
+    showLess: 'Mostrar menos',
   },
   contact: {
     title: 'Contacto',
