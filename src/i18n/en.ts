@@ -24,6 +24,8 @@ export const en = {
     filterAll: 'All',
     viewCode: 'View Code',
     viewLive: 'Live Demo',
+    readMore: 'Read More',
+    showLess: 'Show Less',
   },
   contact: {
     title: 'Get in Touch',

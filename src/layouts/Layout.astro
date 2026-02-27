@@ -31,6 +31,9 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
     
+    <!-- Dynamic Theme Color for Mobile Browsers -->
+    <meta name="theme-color" id="meta-theme-color" content="#0a0a0a" />
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
@@ -38,13 +41,222 @@ const {
     
     <!-- Theme Script (prevent flash) -->
     <script is:inline>
-      const theme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.classList.toggle('light', theme === 'light');
-      document.documentElement.classList.toggle('dark', theme === 'dark');
+      function updateMetaTheme() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        const color = theme === 'dark' ? '#0a0a0a' : '#ffffff';
+        const meta = document.getElementById('meta-theme-color');
+        if (meta) meta.setAttribute('content', color);
+        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      }
+      updateMetaTheme();
     </script>
   </head>
 
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col relative overflow-x-hidden">
+    <!-- Pull-to-Action Easter Egg Container -->
+    <div id="pull-indicator" class="fixed top-0 left-0 w-full flex flex-col items-center justify-center z-[60] pointer-events-none opacity-0 -translate-y-full transition-all duration-300">
+      <div class="bg-wine-900/40 light:bg-wine-50/80 backdrop-blur-md px-6 py-4 rounded-b-3xl border-b border-x border-wine-500/20 shadow-2xl flex flex-col items-center gap-2">
+        <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-wine-500/50" id="pull-avatar">
+          <img src="https://avatars.githubusercontent.com/u/160346195?v=4" alt="Sergio Cid" class="w-full h-full object-cover" />
+        </div>
+        <span class="text-xs font-mono text-wine-400 light:text-wine-600 animate-bounce">🚀 {lang === 'es' ? 'Despegando...' : 'Ignition...'}</span>
+      </div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+    
+    <script>
+      import * as THREE from 'three';
+
+      let container: HTMLElement | null;
+      let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
+      let points: THREE.Points;
+      let mouseX = 0, mouseY = 0;
+      let gyroX = 0, gyroY = 0;
+      let windowHalfX = window.innerWidth / 2;
+      let windowHalfY = window.innerHeight / 2;
+
+      function init() {
+        container = document.getElementById('bg-canvas');
+        if (!container) return;
+
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        const colors = [];
+
+        const color1 = new THREE.Color(0x9d4edd); // Purple
+        const color2 = new THREE.Color(0xff00ff); // Pink
+
+        for (let i = 0; i < 5000; i++) {
+          const x = Math.random() * 2000 - 1000;
+          const y = Math.random() * 2000 - 1000;
+          const z = Math.random() * 2000 - 1000;
+
+          vertices.push(x, y, z);
+
+          const mixedColor = color1.clone().lerp(color2, Math.random());
+          colors.push(mixedColor.r, mixedColor.g, mixedColor.b);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+          size: 3,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.6,
+          blending: THREE.AdditiveBlending
+        });
+
+        points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        renderer = new THREE.WebGLRenderer({ 
+          canvas: container as HTMLCanvasElement, 
+          alpha: true,
+          antialias: true 
+        });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        document.addEventListener('mousemove', onDocumentMouseMove);
+        window.addEventListener('resize', onWindowResize);
+
+        // Gyroscope support
+        if (typeof window.DeviceOrientationEvent !== 'undefined') {
+          window.addEventListener('deviceorientation', (event) => {
+            if (event.beta !== null && event.gamma !== null) {
+              // Map beta (-180 to 180) and gamma (-90 to 90) to parallax values
+              gyroX = (event.gamma * 10); // Subtle horizontal drift
+              gyroY = (event.beta - 45) * 10; // Subtle vertical drift based on usual viewing angle
+            }
+          }, true);
+        }
+        
+        // Listen for theme changes to adjust background
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+              const isLight = document.documentElement.classList.contains('light');
+              material.opacity = isLight ? 0.3 : 0.6;
+            }
+          });
+        });
+        observer.observe(document.documentElement, { attributes: true });
+        
+        // Initial check
+        if (document.documentElement.classList.contains('light')) {
+          material.opacity = 0.3;
+        }
+
+        animate();
+      }
+
+      function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function onDocumentMouseMove(event: MouseEvent) {
+        mouseX = event.clientX - windowHalfX;
+        mouseY = event.clientY - windowHalfY;
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        render();
+      }
+
+      function render() {
+        // Blend mouse and gyro input
+        const targetX = mouseX + gyroX;
+        const targetY = mouseY + gyroY;
+
+        camera.position.x += (targetX - camera.position.x) * 0.05;
+        camera.position.y += (-targetY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        points.rotation.y += 0.001;
+        
+        renderer.render(scene, camera);
+      }
+
+      // Initialize on DOMContentLoaded and also on Astro page loads
+      document.addEventListener('DOMContentLoaded', init);
+      // Support for View Transitions
+      document.addEventListener('astro:after-swap', init);
+    </script>
+
+    <!-- Custom Pull-to-Action Script -->
+    <script>
+      let startY = 0;
+      let pulling = false;
+      const PULL_THRESHOLD = 150;
+      const indicator = document.getElementById('pull-indicator');
+      const avatar = document.getElementById('pull-avatar');
+
+      function handleHaptic() {
+        if ('vibrate' in navigator) {
+          navigator.vibrate(15);
+        }
+      }
+
+      document.addEventListener('touchstart', (e) => {
+        if (window.scrollY === 0) {
+          startY = e.touches[0].pageY;
+          pulling = true;
+          if (indicator) indicator.style.transition = 'none';
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchmove', (e) => {
+        if (!pulling || window.scrollY > 0) return;
+        
+        const currentY = e.touches[0].pageY;
+        const pullDistance = Math.max(0, currentY - startY);
+        const resistedPull = Math.pow(pullDistance, 0.7) * 5; // Resistencia física
+
+        if (indicator && pullDistance > 0) {
+          indicator.style.opacity = (resistedPull / PULL_THRESHOLD).toString();
+          indicator.style.transform = `translateY(${Math.min(resistedPull - 100, 0)}px)`;
+          
+          if (avatar && resistedPull > PULL_THRESHOLD) {
+            avatar.style.transform = `scale(${1 + (resistedPull - PULL_THRESHOLD) / 200})`;
+            avatar.style.borderColor = '#9d4edd';
+          }
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchend', () => {
+        if (!pulling) return;
+        pulling = false;
+        
+        if (indicator) {
+          indicator.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+          indicator.style.opacity = '0';
+          indicator.style.transform = 'translateY(-100%)';
+          
+          // Trigger Haptic if strong pull
+          const rect = indicator.getBoundingClientRect();
+          if (rect.top > -20) {
+            handleHaptic();
+          }
+        }
+      });
+    </script>
+
     <Header lang={lang} />
     
     <main class="flex-1">
@@ -53,12 +265,22 @@ const {
     
     <Footer lang={lang} />
     
-    <!-- Theme Toggle Script con View Transitions -->
+    <!-- Theme Toggle Script con View Transitions & Haptics -->
     <script>
       function setTheme(theme: 'dark' | 'light') {
         localStorage.setItem('theme', theme);
         document.documentElement.classList.toggle('light', theme === 'light');
         document.documentElement.classList.toggle('dark', theme === 'dark');
+        
+        // Update meta theme color
+        const color = theme === 'dark' ? '#0a0a0a' : '#ffffff';
+        const meta = document.getElementById('meta-theme-color');
+        if (meta) meta.setAttribute('content', color);
+
+        // Haptic feedback
+        if ('vibrate' in navigator) {
+          navigator.vibrate(10);
+        }
       }
 
       document.addEventListener('DOMContentLoaded', () => {
