@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @layer base {
+
   /* ✅ FIX: Previene scroll horizontal global en mobile */
   html {
     scroll-behavior: smooth;
@@ -86,7 +87,7 @@
   }
 
   .light .card {
-    @apply bg-white border-gray-200 hover:border-wine-300 hover:shadow-wine-200/30;
+    @apply bg-surface-card border-surface-border hover:border-wine-700/30 hover:shadow-xl hover:shadow-wine-900/20;
   }
 
   .section-title {
@@ -134,16 +135,32 @@
   color: #111827 !important;
 }
 
-@layer utilities {
-  .animate-delay-100 { animation-delay: 100ms; }
-  .animate-delay-200 { animation-delay: 200ms; }
-  .animate-delay-300 { animation-delay: 300ms; }
-  .animate-delay-400 { animation-delay: 400ms; }
-  .animate-delay-500 { animation-delay: 500ms; }
+.light .card .text-text-primary {
+  color: #ffffff;
+}
 
-  .text-balance {
-    text-wrap: balance;
-  }
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 /* ===== SCROLL REVEAL ANIMATIONS ===== */
@@ -158,11 +175,25 @@
   transform: translateY(0);
 }
 
-.scroll-reveal.delay-100 { transition-delay: 100ms; }
-.scroll-reveal.delay-200 { transition-delay: 200ms; }
-.scroll-reveal.delay-300 { transition-delay: 300ms; }
-.scroll-reveal.delay-400 { transition-delay: 400ms; }
-.scroll-reveal.delay-500 { transition-delay: 500ms; }
+.scroll-reveal.delay-100 {
+  transition-delay: 100ms;
+}
+
+.scroll-reveal.delay-200 {
+  transition-delay: 200ms;
+}
+
+.scroll-reveal.delay-300 {
+  transition-delay: 300ms;
+}
+
+.scroll-reveal.delay-400 {
+  transition-delay: 400ms;
+}
+
+.scroll-reveal.delay-500 {
+  transition-delay: 500ms;
+}
 
 .scroll-reveal-left {
   opacity: 0;
@@ -208,19 +239,41 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .floating-badge {
   animation: floatBadge 5s ease-in-out infinite;
 }
 
-.floating-badge-1 { animation-delay: 0s; }
-.floating-badge-2 { animation-delay: -1.5s; }
-.floating-badge-3 { animation-delay: -3s; }
+.floating-badge-1 {
+  animation-delay: 0s;
+}
+
+.floating-badge-2 {
+  animation-delay: -1.5s;
+}
+
+.floating-badge-3 {
+  animation-delay: -3s;
+}
 
 @keyframes floatBadge {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }

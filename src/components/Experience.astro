@@ -73,7 +73,6 @@ const experiences = [
 
 const viewCertificateText = lang === 'es' ? 'Ver certificado' : 'View certificate';
 const closeText = lang === 'es' ? 'Cerrar' : 'Close';
-const tapHint = lang === 'es' ? 'Toca para ver' : 'Tap to view';
 ---
 
 <section id="experience" class="py-20 lg:py-32">
@@ -95,33 +94,36 @@ const tapHint = lang === 'es' ? 'Toca para ver' : 'Tap to view';
           <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
             <!-- Timeline dot -->
             <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-wine-700 border-4 border-surface-dark light:border-white z-10"></div>
-            
+
             <!-- Content card -->
-            <div class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} ${index % 2 === 0 ? 'scroll-reveal-left' : 'scroll-reveal-right'}`} style={`transition-delay: ${index * 100}ms`}>
+            <div
+              class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} ${index % 2 === 0 ? 'scroll-reveal-left' : 'scroll-reveal-right'}`}
+              style={`transition-delay: ${index * 100}ms`}
+            >
               <div class="card group">
                 <!-- Date badge & Certificate button -->
                 <div class="flex items-center justify-between mb-3">
                   <div class="inline-flex items-center gap-2">
-                    <span class="text-xs font-mono text-wine-400 bg-wine-900/30 light:bg-wine-50 px-2 py-1 rounded">
+                    <span class="text-xs font-mono text-wine-400 bg-wine-900/30 px-2 py-1 rounded">
                       {exp.date}
                     </span>
                     <span class={`text-xs px-2 py-1 rounded ${
-                      exp.type === 'education' 
-                        ? 'bg-blue-900/30 text-blue-400 light:bg-blue-50 light:text-blue-600' 
-                        : 'bg-green-900/30 text-green-400 light:bg-green-50 light:text-green-600'
+                      exp.type === 'education'
+                        ? 'bg-blue-900/30 text-blue-400'
+                        : 'bg-green-900/30 text-green-400'
                     }`}>
-                      {exp.type === 'education' 
+                      {exp.type === 'education'
                         ? (lang === 'es' ? 'Educación' : 'Education')
                         : (lang === 'es' ? 'Certificación' : 'Certification')
                       }
                     </span>
                   </div>
-                  
+
                   <!-- Certificate Button with Thumbnail Hover -->
                   {exp.certificate && (
                     <div class="relative group/cert-container">
-                      <button 
-                        class="certificate-btn p-2 rounded-lg bg-wine-900/30 light:bg-wine-50 text-wine-400 light:text-wine-600 hover:bg-wine-700 hover:text-white transition-all group/cert relative"
+                      <button
+                        class="certificate-btn p-2 rounded-lg bg-wine-900/30 text-wine-400 hover:bg-wine-700 hover:text-white transition-all group/cert relative"
                         data-certificate={exp.certificate}
                         data-title={exp.title}
                         aria-label={viewCertificateText}
@@ -129,7 +131,6 @@ const tapHint = lang === 'es' ? 'Toca para ver' : 'Tap to view';
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
-                        
                         <!-- Mobile Hint Badge -->
                         <span class="absolute -top-1 -right-1 flex h-3 w-3 sm:hidden">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wine-400 opacity-75"></span>
@@ -137,11 +138,11 @@ const tapHint = lang === 'es' ? 'Toca para ver' : 'Tap to view';
                         </span>
                       </button>
 
-                      <!-- Thumbnail Preview -->
+                      <!-- Thumbnail Preview on hover (desktop) -->
                       <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-48 aspect-[4/3] bg-white rounded-lg shadow-2xl overflow-hidden opacity-0 pointer-events-none group-hover/cert-container:opacity-100 transition-all duration-300 transform scale-90 group-hover/cert-container:scale-100 z-50 border-2 border-wine-700/50">
-                        <img 
-                          src={exp.certificate} 
-                          alt={exp.title} 
+                        <img
+                          src={exp.certificate}
+                          alt={exp.title}
                           class="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -149,19 +150,19 @@ const tapHint = lang === 'es' ? 'Toca para ver' : 'Tap to view';
                     </div>
                   )}
                 </div>
-                
-                <!-- Title -->
-                <h3 class="text-lg font-display font-semibold text-text-primary mb-1 group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
+
+                <!-- ✅ Título del certificado — blanco en dark y light mode -->
+                <h3 class="exp-card-title text-lg font-display font-semibold mb-1 transition-colors">
                   {exp.title}
                 </h3>
-                
+
                 <!-- Organization -->
-                <p class="text-wine-400 light:text-wine-600 font-medium text-sm mb-3">
+                <p class="text-wine-400 font-medium text-sm mb-3">
                   {exp.organization}
                 </p>
-                
+
                 <!-- Description -->
-                <p class="text-text-secondary light:text-gray-600 text-sm leading-relaxed">
+                <p class="text-text-secondary text-sm leading-relaxed">
                   {exp.description}
                 </p>
               </div>
@@ -175,283 +176,133 @@ const tapHint = lang === 'es' ? 'Toca para ver' : 'Tap to view';
 
 <!-- Certificate Modal with Zoom Controls -->
 <div id="certificate-modal" class="fixed inset-0 z-[100] hidden">
-  <!-- Backdrop -->
   <div id="modal-backdrop" class="absolute inset-0 bg-black/90 backdrop-blur-md"></div>
-  
-  <!-- Modal Content -->
   <div class="relative flex flex-col h-full">
-    <!-- Header/Controls -->
     <div class="flex items-center justify-between p-4 md:p-6 text-white z-10 w-full max-w-6xl mx-auto">
       <h3 id="modal-title" class="text-lg font-display font-semibold truncate pr-4"></h3>
-      
       <div class="flex items-center gap-2">
-        <!-- Zoom Controls -->
         <div class="flex items-center gap-1 bg-white/10 backdrop-blur-sm rounded-xl p-1 border border-white/10">
-          <button 
-            id="cert-zoom-out"
-            class="p-2 hover:bg-white/20 rounded-lg transition-colors text-white/80 hover:text-white"
-            title="Zoom Out"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-            </svg>
+          <button id="cert-zoom-out" class="p-2 hover:bg-white/20 rounded-lg transition-colors text-white/80 hover:text-white" title="Zoom Out">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
           </button>
-          
           <span id="cert-zoom-level" class="text-xs font-mono min-w-[3.5rem] text-center text-white/60 select-none">100%</span>
-          
-          <button 
-            id="cert-zoom-in"
-            class="p-2 hover:bg-white/20 rounded-lg transition-colors text-white/80 hover:text-white"
-            title="Zoom In"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
+          <button id="cert-zoom-in" class="p-2 hover:bg-white/20 rounded-lg transition-colors text-white/80 hover:text-white" title="Zoom In">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
           </button>
-
           <div class="w-px h-4 bg-white/10 mx-1"></div>
-
-          <button 
-            id="cert-zoom-reset"
-            class="p-2 hover:bg-white/20 rounded-lg transition-colors text-white/80 hover:text-white"
-            title="Reset"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
+          <button id="cert-zoom-reset" class="p-2 hover:bg-white/20 rounded-lg transition-colors text-white/80 hover:text-white" title="Reset">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           </button>
         </div>
-        
-        <!-- Close Button -->
-        <button 
-          id="modal-close" 
-          class="p-2 bg-white/10 hover:bg-red-500/20 hover:text-red-400 rounded-xl transition-all border border-white/10"
-          title={closeText}
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <button id="modal-close" class="p-2 bg-white/10 hover:bg-red-500/20 hover:text-red-400 rounded-xl transition-all border border-white/10" title={closeText}>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
     </div>
-    
-    <!-- Image Viewport -->
-    <div 
-      id="cert-viewport"
-      class="flex-1 overflow-hidden cursor-grab active:cursor-grabbing flex items-center justify-center p-4 md:p-8"
-    >
+
+    <div id="cert-viewport" class="flex-1 overflow-hidden cursor-grab active:cursor-grabbing flex items-center justify-center p-4 md:p-8">
       <div id="cert-wrapper" class="transition-transform duration-200 ease-out will-change-transform">
-        <img 
-          id="modal-image" 
-          src="" 
-          alt="Certificate" 
+        <img id="modal-image" src="" alt="Certificate"
           class="max-w-full max-h-[80vh] rounded-lg shadow-2xl pointer-events-none select-none"
-          draggable="false"
-        />
+          draggable="false"/>
       </div>
     </div>
   </div>
 </div>
 
 <style>
+  /* ✅ Títulos de certificados/educación — blanco en dark y light mode */
+  .exp-card-title {
+    color: #ffffff !important;
+  }
+  /* Hover: rose suave que combina con el wine del portfolio */
+  .card:hover .exp-card-title {
+    color: #fda4af !important;
+  }
+
+  #certificate-modal.active { display: block; }
+
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
   }
-  
-  .animate-scale-in {
-    animation: scaleIn 0.2s ease-out forwards;
-  }
-  
-  #certificate-modal.active {
-    display: block;
-  }
+  .animate-scale-in { animation: scaleIn 0.2s ease-out forwards; }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('certificate-modal');
-    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
-    const modalTitle = document.getElementById('modal-title');
-    const modalClose = document.getElementById('modal-close');
-    const modalBackdrop = document.getElementById('modal-backdrop');
-    const certificateBtns = document.querySelectorAll('.certificate-btn');
-    
-    const viewport = document.getElementById('cert-viewport');
-    const wrapper = document.getElementById('cert-wrapper');
-    const zoomInBtn = document.getElementById('cert-zoom-in');
-    const zoomOutBtn = document.getElementById('cert-zoom-out');
-    const zoomResetBtn = document.getElementById('cert-zoom-reset');
-    const zoomLevel = document.getElementById('cert-zoom-level');
+    const modal       = document.getElementById('certificate-modal');
+    const modalImage  = document.getElementById('modal-image') as HTMLImageElement;
+    const modalTitle  = document.getElementById('modal-title');
+    const modalClose  = document.getElementById('modal-close');
+    const modalBG     = document.getElementById('modal-backdrop');
+    const certBtns    = document.querySelectorAll('.certificate-btn');
+    const viewport    = document.getElementById('cert-viewport');
+    const wrapper     = document.getElementById('cert-wrapper');
+    const zoomIn_btn  = document.getElementById('cert-zoom-in');
+    const zoomOut_btn = document.getElementById('cert-zoom-out');
+    const zoomReset   = document.getElementById('cert-zoom-reset');
+    const zoomLabel   = document.getElementById('cert-zoom-level');
 
-    let scale = 1;
-    let translateX = 0;
-    let translateY = 0;
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
+    let scale = 1, tx = 0, ty = 0, dragging = false, sx = 0, sy = 0;
+    const MIN = 0.5, MAX = 4, STEP = 0.25;
 
-    const MIN_SCALE = 0.5;
-    const MAX_SCALE = 4;
-    const SCALE_STEP = 0.25;
+    const applyT = () => { if(wrapper) wrapper.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`; };
+    const applyD = () => { if(zoomLabel) zoomLabel.textContent = Math.round(scale*100)+'%'; };
+    const resetZ = () => { scale=1;tx=0;ty=0;applyT();applyD(); };
+    const zIn    = () => { if(scale<MAX){scale=Math.min(scale+STEP,MAX);applyT();applyD();} };
+    const zOut   = () => { if(scale>MIN){scale=Math.max(scale-STEP,MIN);if(scale<=1){tx=0;ty=0;}applyT();applyD();} };
 
-    function updateTransform() {
-      if (wrapper) {
-        wrapper.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      }
-    }
+    zoomIn_btn?.addEventListener('click',  e=>{e.stopPropagation();zIn();});
+    zoomOut_btn?.addEventListener('click', e=>{e.stopPropagation();zOut();});
+    zoomReset?.addEventListener('click',   e=>{e.stopPropagation();resetZ();});
 
-    function updateZoomDisplay() {
-      if (zoomLevel) {
-        zoomLevel.textContent = Math.round(scale * 100) + '%';
-      }
-    }
+    viewport?.addEventListener('wheel', e=>{e.preventDefault();e.deltaY<0?zIn():zOut();},{passive:false});
+    viewport?.addEventListener('mousedown', e=>{if(scale>1){dragging=true;sx=e.clientX-tx;sy=e.clientY-ty;(viewport as HTMLElement).style.cursor='grabbing';}});
+    document.addEventListener('mousemove', e=>{if(dragging){tx=e.clientX-sx;ty=e.clientY-sy;applyT();}});
+    document.addEventListener('mouseup', ()=>{dragging=false;if(viewport)(viewport as HTMLElement).style.cursor=scale>1?'grab':'default';});
 
-    function resetZoom() {
-      scale = 1;
-      translateX = 0;
-      translateY = 0;
-      updateTransform();
-      updateZoomDisplay();
-    }
+    let lastD=0, lastTX=0, lastTY=0;
+    viewport?.addEventListener('touchstart', e=>{
+      if(e.touches.length===2) lastD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      else if(e.touches.length===1&&scale>1){dragging=true;lastTX=e.touches[0].clientX-tx;lastTY=e.touches[0].clientY-ty;}
+    },{passive:true});
+    viewport?.addEventListener('touchmove', e=>{
+      if(e.touches.length===2){
+        const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+        if(lastD>0){const delta=d-lastD;if(delta>2&&scale<MAX)zIn();else if(delta<-2&&scale>MIN)zOut();}lastD=d;
+      }else if(e.touches.length===1&&dragging){tx=e.touches[0].clientX-lastTX;ty=e.touches[0].clientY-lastTY;applyT();}
+    },{passive:true});
+    viewport?.addEventListener('touchend',()=>{dragging=false;lastD=0;});
 
-    function zoomIn() {
-      if (scale < MAX_SCALE) {
-        scale = Math.min(scale + SCALE_STEP, MAX_SCALE);
-        updateTransform();
-        updateZoomDisplay();
-      }
-    }
-
-    function zoomOut() {
-      if (scale > MIN_SCALE) {
-        scale = Math.max(scale - SCALE_STEP, MIN_SCALE);
-        if (scale <= 1) {
-          translateX = 0;
-          translateY = 0;
-        }
-        updateTransform();
-        updateZoomDisplay();
-      }
-    }
-
-    // Zoom Handlers
-    zoomInBtn?.addEventListener('click', (e) => { e.stopPropagation(); zoomIn(); });
-    zoomOutBtn?.addEventListener('click', (e) => { e.stopPropagation(); zoomOut(); });
-    zoomResetBtn?.addEventListener('click', (e) => { e.stopPropagation(); resetZoom(); });
-
-    // Wheel Zoom
-    viewport?.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      if (e.deltaY < 0) zoomIn();
-      else zoomOut();
-    }, { passive: false });
-
-    // Pan Handlers
-    viewport?.addEventListener('mousedown', (e) => {
-      if (scale > 1) {
-        isDragging = true;
-        startX = e.clientX - translateX;
-        startY = e.clientY - translateY;
-        viewport.style.cursor = 'grabbing';
-      }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        translateX = e.clientX - startX;
-        translateY = e.clientY - startY;
-        updateTransform();
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      if (viewport) viewport.style.cursor = scale > 1 ? 'grab' : 'default';
-    });
-
-    // Touch support
-    let lastTouchDistance = 0;
-    let lastTouchX = 0;
-    let lastTouchY = 0;
-
-    viewport?.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 2) {
-        lastTouchDistance = Math.hypot(
-          e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.touches[1].clientY
-        );
-      } else if (e.touches.length === 1 && scale > 1) {
-        isDragging = true;
-        lastTouchX = e.touches[0].clientX - translateX;
-        lastTouchY = e.touches[0].clientY - translateY;
-      }
-    }, { passive: true });
-
-    viewport?.addEventListener('touchmove', (e) => {
-      if (e.touches.length === 2) {
-        const distance = Math.hypot(
-          e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.touches[1].clientY
-        );
-        if (lastTouchDistance > 0) {
-          const delta = distance - lastTouchDistance;
-          if (delta > 2 && scale < MAX_SCALE) zoomIn();
-          else if (delta < -2 && scale > MIN_SCALE) zoomOut();
-        }
-        lastTouchDistance = distance;
-      } else if (e.touches.length === 1 && isDragging) {
-        translateX = e.touches[0].clientX - lastTouchX;
-        translateY = e.touches[0].clientY - lastTouchY;
-        updateTransform();
-      }
-    }, { passive: true });
-
-    viewport?.addEventListener('touchend', () => {
-      isDragging = false;
-      lastTouchDistance = 0;
-    });
-
-    // Modal Interaction
-    certificateBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    certBtns.forEach(btn => {
+      btn.addEventListener('click', e=>{
         e.stopPropagation();
-        const certificate = btn.getAttribute('data-certificate');
+        const cert  = btn.getAttribute('data-certificate');
         const title = btn.getAttribute('data-title');
-        
-        if (certificate && modalImage && modalTitle && modal) {
-          modalImage.src = certificate;
-          modalTitle.textContent = title || '';
+        if(cert && modalImage && modalTitle && modal){
+          modalImage.src = cert;
+          modalTitle.textContent = title||'';
           modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
-          resetZoom();
+          document.body.style.overflow='hidden';
+          resetZ();
         }
       });
     });
 
     const closeModal = () => {
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-        resetZoom();
-      }
+      modal?.classList.remove('active');
+      document.body.style.overflow='';
+      resetZ();
     };
-
     modalClose?.addEventListener('click', closeModal);
-    modalBackdrop?.addEventListener('click', closeModal);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-      if (modal?.classList.contains('active')) {
-        if (e.key === '+' || e.key === '=') zoomIn();
-        if (e.key === '-') zoomOut();
-        if (e.key === '0') resetZoom();
+    modalBG?.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e=>{
+      if(e.key==='Escape')closeModal();
+      if(modal?.classList.contains('active')){
+        if(e.key==='+'||e.key==='=')zIn();
+        if(e.key==='-')zOut();
+        if(e.key==='0')resetZ();
       }
     });
   });

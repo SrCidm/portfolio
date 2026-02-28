@@ -25,7 +25,7 @@ const projects = [
     status: 'live',
     description: lang === 'es'
       ? 'Portfolio web bilingüe para artista contemporáneo especializado en arte cinético y esculturas lumínicas. Incluye hero animado con 25 frames stop-motion usando Canvas API nativo, galería lightbox con 67 obras, y sistema i18n personalizado. Optimizado con Astro SSG para máxima performance.'
-      : 'Bilingual portfolio for contemporary artist specializing in kinetic art and light sculptures. Animated hero with 25-frame stop-motion via Canvas API, lightbox gallery with 67 artworks, and custom i18n system. Optimized with Astro SSG.',
+      : 'Bilingual portfolio for contemporary artist specializing in kinetic art and light sculptures. Animated hero with 25-frame stop-motion via Canvas API, lightbox gallery with 67 artworks, custom i18n. Optimized with Astro SSG.',
     image: '/images/projects/Ricardopage.webp',
     technologies: ['Astro', 'TypeScript', 'Tailwind CSS', 'Canvas API'],
     github: 'https://github.com/SrCidm/web-ricardo-laverde',
@@ -36,7 +36,7 @@ const projects = [
     status: 'live',
     description: lang === 'es'
       ? 'Herramienta CLI en Python para transcribir audios locales, videos de YouTube y reels de Instagram usando el modelo OpenAI Whisper. Soporta FFmpeg para notas de voz de WhatsApp y extrae timestamps automáticos. Ideal para periodistas, podcasters y creadores de contenido.'
-      : 'Python CLI tool to transcribe local audio, YouTube videos, and Instagram reels using OpenAI Whisper. Features FFmpeg support for WhatsApp voice notes and automatic timestamp extraction. Ideal for journalists, podcasters and content creators.',
+      : 'Python CLI tool to transcribe local audio, YouTube videos, and Instagram reels using OpenAI Whisper. FFmpeg support for WhatsApp voice notes and automatic timestamp extraction. Ideal for journalists and content creators.',
     image: '/images/projects/transcrip.webp',
     technologies: ['Python', 'OpenAI Whisper'],
     github: 'https://github.com/SrCidm/Transcriptor',
@@ -47,7 +47,7 @@ const projects = [
     status: 'dev',
     description: lang === 'es'
       ? 'Aplicación de escritorio moderna con UI oscura (CustomTkinter) para descargar videos de YouTube en HD, extraer audio y transcribirlo automáticamente. Soporta 9 idiomas y procesamiento completamente local, sin enviar datos a servidores externos.'
-      : 'Modern desktop application with dark UI (CustomTkinter) to download HD YouTube videos, extract audio, and auto-transcribe. Supports 9 languages and fully local processing — no data sent to external servers.',
+      : 'Modern desktop app with dark UI (CustomTkinter) to download HD YouTube videos, extract audio, and auto-transcribe. Supports 9 languages and fully local processing — no data sent to external servers.',
     image: '/images/projects/YTPRO.webp',
     technologies: ['Python', 'CustomTkinter', 'Tkinter', 'OpenAI Whisper'],
     github: 'https://github.com/SrCidm/youtubeDownloader',
@@ -68,8 +68,8 @@ const projects = [
     title: 'Pokémon Battle Simulator',
     status: 'archived',
     description: lang === 'es'
-      ? 'GUI en PyQt5 para buscar Pokémon, ver estadísticas y simular batallas entre dos Pokémon. Consume la PokéAPI para datos en tiempo real e implementa un sistema de combate por turnos con cálculo de daño basado en estadísticas reales.'
-      : 'PyQt5 GUI to search Pokémon, view stats, and simulate turn-based battles. Consumes PokéAPI for real-time data and implements a damage calculation system based on real Pokémon stats.',
+      ? 'GUI en PyQt5 para buscar Pokémon, ver estadísticas y simular batallas por turnos entre dos Pokémon. Consume la PokéAPI para datos en tiempo real e implementa cálculo de daño basado en estadísticas reales del juego.'
+      : 'PyQt5 GUI to search Pokémon, view stats, and simulate turn-based battles. Consumes PokéAPI for real-time data and implements a damage calculation system based on real game stats.',
     image: '/images/projects/pokemonBattle.webp',
     technologies: ['Python', 'API'],
     github: 'https://github.com/SrCidm/crypto-pagev1',
@@ -124,7 +124,7 @@ const projects = [
     status: 'archived',
     description: lang === 'es'
       ? 'Plataforma web para mostrar videos promocionales de productos destacados con enlaces directos a Amazon. Desarrollada con Python para el backend y HTML/CSS para una presentación visual atractiva de los productos.'
-      : 'Web platform showcasing promotional videos for featured products with direct Amazon links. Developed with Python backend and HTML/CSS for an attractive visual presentation of products.',
+      : 'Web platform showcasing promotional videos for featured products with direct Amazon links. Developed with Python backend and HTML/CSS for an attractive visual presentation.',
     image: '/images/projects/OD.webp',
     technologies: ['Python', 'HTML', 'CSS'],
     github: 'https://github.com/SrCidm/OD',
@@ -135,28 +135,21 @@ const projects = [
 const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort();
 
 const statusLabel = {
-  live:     lang === 'es' ? 'En Vivo'    : 'Live',
-  dev:      lang === 'es' ? 'En Dev'     : 'In Dev',
-  archived: lang === 'es' ? 'Archivado'  : 'Archived',
+  live:     lang === 'es' ? 'En Vivo'   : 'Live',
+  dev:      lang === 'es' ? 'En Dev'    : 'In Dev',
+  archived: lang === 'es' ? 'Archivado' : 'Archived',
 };
-
-const readMoreText  = lang === 'es' ? 'Leer más'   : 'Read more';
-const readLessText  = lang === 'es' ? 'Leer menos' : 'Read less';
-const closeText     = lang === 'es' ? 'Cerrar'     : 'Close';
-const zoomInText    = lang === 'es' ? 'Acercar'    : 'Zoom in';
-const zoomOutText   = lang === 'es' ? 'Alejar'     : 'Zoom out';
-const resetText     = lang === 'es' ? 'Restablecer': 'Reset';
-const dragHint      = lang === 'es'
+const closeText    = lang === 'es' ? 'Cerrar'      : 'Close';
+const zoomInText   = lang === 'es' ? 'Acercar'     : 'Zoom in';
+const zoomOutText  = lang === 'es' ? 'Alejar'      : 'Zoom out';
+const resetText    = lang === 'es' ? 'Restablecer' : 'Reset';
+const dragHint     = lang === 'es'
   ? 'Rueda del mouse para zoom · Arrastra para mover'
   : 'Mouse wheel to zoom · Drag to pan';
-const viewCodeText  = lang === 'es' ? 'Ver código' : 'View code';
-const viewLiveText  = lang === 'es' ? 'Ver en vivo': 'View live';
-const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
+const noDemoText   = lang === 'es' ? 'Sin demo'    : 'No demo';
 ---
 
 <section id="projects" class="py-24 lg:py-36 relative overflow-hidden">
-
-  <!-- Subtle grid bg -->
   <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
     <div class="proj-grid-bg"></div>
   </div>
@@ -173,7 +166,7 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
           <h2 class="text-4xl md:text-6xl font-display font-bold text-text-primary light:text-gray-900 leading-none">
             {lang === 'es' ? 'Proyectos' : 'Projects'}
             <span class="block text-wine-500/30 light:text-wine-300/50 text-2xl md:text-3xl font-light tracking-widest mt-1">
-              {String(projects.length).padStart(2, '0')} {lang === 'es' ? 'trabajos' : 'builds'}
+              {String(projects.length).padStart(2,'0')} {lang === 'es' ? 'trabajos' : 'builds'}
             </span>
           </h2>
         </div>
@@ -213,15 +206,14 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projects-grid">
       {projects.map((project, index) => (
         <article
-          class="project-card grid-card group relative rounded-xl border border-surface-border light:border-gray-200 bg-surface-card light:bg-white overflow-hidden scroll-reveal-scale"
+          class="project-card grid-card group relative rounded-xl border border-surface-border light:border-gray-200 bg-surface-card light:bg-wine-900 overflow-hidden"
           data-technologies={project.technologies.map(t => t.toLowerCase()).join(',')}
           data-index={index}
-          style={`transition-delay: ${index * 50}ms`}
         >
           <!-- Spotlight -->
           <div class="spotlight" aria-hidden="true"></div>
 
-          <!-- Image — click abre modal zoom -->
+          <!-- Image -->
           <div
             class="relative aspect-[16/9] overflow-hidden cursor-pointer project-image-btn"
             data-image={project.image}
@@ -233,16 +225,13 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               loading={index < 3 ? 'eager' : 'lazy'}
             />
-            <!-- Hover overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-surface-card/80 via-transparent to-transparent light:from-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-card/80 via-transparent to-transparent light:from-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3">
               <div class="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
               </div>
             </div>
-
-            <!-- Status badge -->
             <div class="absolute top-3 left-3">
               <span class={`status-badge status-${project.status}`}>
                 {project.status === 'live' && (
@@ -251,25 +240,23 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
                 {statusLabel[project.status as keyof typeof statusLabel]}
               </span>
             </div>
-
-            <!-- Number -->
             <span class="absolute bottom-2 right-3 font-mono text-white/15 text-3xl font-bold select-none leading-none">
-              {String(index + 1).padStart(2, '0')}
+              {String(index + 1).padStart(2,'0')}
             </span>
           </div>
 
-          <!-- Card Content -->
+          <!-- Content -->
           <div class="p-5 flex flex-col gap-3">
 
-            <!-- Title row -->
+            <!-- Title + expand btn -->
             <div class="flex items-start justify-between gap-2">
-              <h3 class="font-display font-semibold text-base text-text-primary light:text-white-900 group-hover:text-wine-400 light:group-hover:text-black-900 transition-colors leading-snug">
+              <!-- ✅ LIGHT MODE: título blanco forzado con .project-title -->
+              <h3 class="project-title font-display font-semibold text-base leading-snug transition-colors">
                 {project.title}
               </h3>
-              <!-- Expand toggle button -->
               <button
-                class="expand-btn shrink-0 w-7 h-7 rounded-lg border border-surface-border light:border-gray-200 bg-surface-darker/50 light:bg-gray-50 flex items-center justify-center text-text-muted light:text-gray-400 hover:border-wine-600/50 hover:text-wine-400 light:hover:text-wine-600 transition-all duration-200"
-                aria-label={readMoreText}
+                class="expand-btn shrink-0 w-7 h-7 rounded-lg border border-surface-border light:border-wine-700/40 bg-surface-darker/50 light:bg-wine-800/40 flex items-center justify-center text-text-muted light:text-wine-300/70 hover:border-wine-500 hover:text-wine-400 transition-all duration-200"
+                aria-label="Expand description"
                 aria-expanded="false"
               >
                 <svg class="expand-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -278,15 +265,15 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
               </button>
             </div>
 
-            <!-- Description preview (always 2 lines) -->
-            <p class="desc-preview text-text-muted light:text-gray-500 text-xs leading-relaxed line-clamp-2">
+            <!-- Preview (2 lines always visible) -->
+            <p class="desc-preview text-text-muted light:text-wine-200/70 text-xs leading-relaxed line-clamp-2">
               {project.description}
             </p>
 
-            <!-- Expanded description panel -->
+            <!-- Expanded panel -->
             <div class="desc-expanded overflow-hidden transition-all duration-400 ease-in-out max-h-0 opacity-0">
-              <div class="desc-inner pt-1 pb-2 border-t border-surface-border/40 light:border-gray-100">
-                <p class="text-text-secondary light:text-gray-600 text-xs leading-relaxed">
+              <div class="desc-inner pt-2 pb-1 border-t border-surface-border/40 light:border-wine-700/30">
+                <p class="text-text-secondary light:text-wine-100/80 text-xs leading-relaxed">
                   {project.description}
                 </p>
               </div>
@@ -294,7 +281,7 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
 
             <!-- Tech badges -->
             <div class="flex flex-wrap gap-1.5">
-              {project.technologies.slice(0, 4).map(tech => (
+              {project.technologies.slice(0,4).map(tech => (
                 <span class="tech-badge text-[10px] px-2 py-0.5">{tech}</span>
               ))}
               {project.technologies.length > 4 && (
@@ -305,14 +292,10 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
             </div>
 
             <!-- CTAs -->
-            <div class="flex gap-2 pt-2 border-t border-surface-border/50 light:border-gray-100 mt-auto">
+            <div class="flex gap-2 pt-2 border-t border-surface-border/50 light:border-wine-700/30 mt-auto">
               {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="cta-btn cta-ghost cta-sm flex-1"
-                >
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                   class="cta-btn cta-ghost cta-sm flex-1">
                   <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
@@ -320,12 +303,8 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
                 </a>
               )}
               {project.live ? (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="cta-btn cta-primary cta-sm flex-1"
-                >
+                <a href={project.live} target="_blank" rel="noopener noreferrer"
+                   class="cta-btn cta-primary cta-sm flex-1">
                   <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                   </svg>
@@ -342,7 +321,7 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
             </div>
           </div>
 
-          <!-- Click ripple container -->
+          <!-- Ripple container -->
           <div class="ripple-container absolute inset-0 pointer-events-none overflow-hidden rounded-xl" aria-hidden="true"></div>
         </article>
       ))}
@@ -350,7 +329,7 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
   </div>
 </section>
 
-<!-- ── Zoom Modal ── -->
+<!-- ── Modal ── -->
 <div id="project-modal" class="fixed inset-0 z-50 hidden">
   <div id="project-modal-backdrop" class="absolute inset-0 bg-black/95 backdrop-blur-sm"></div>
   <div class="relative flex flex-col h-full">
@@ -395,7 +374,7 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
 <style>
   /* ── Grid background ── */
   .proj-grid-bg {
-    position: absolute; inset: 0;
+    position:absolute; inset:0;
     background-image:
       linear-gradient(rgba(114,47,55,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(114,47,55,0.04) 1px, transparent 1px);
@@ -410,19 +389,18 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
 
   /* ── Filter chips ── */
   .filter-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 14px; font-size: 0.72rem; font-weight: 500;
-    font-family: var(--font-mono, monospace); border-radius: 999px;
-    border: 1px solid; transition: all 0.2s ease; cursor: pointer;
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 14px; font-size:0.72rem; font-weight:500;
+    font-family:var(--font-mono,monospace); border-radius:999px;
+    border:1px solid; transition:all 0.2s ease; cursor:pointer;
     @apply border-surface-border text-text-muted bg-surface-card;
   }
-  .filter-chip:hover    { @apply border-wine-700/50 text-wine-400 bg-wine-900/10; }
-  .filter-chip.active   { @apply border-wine-600 text-white bg-wine-700; }
-  .light .filter-chip   { @apply border-gray-200 text-gray-500 bg-white; }
-  .light .filter-chip:hover  { @apply border-wine-300 text-wine-600 bg-wine-50; }
-  .light .filter-chip.active { @apply border-wine-700 text-white bg-wine-700; }
-
-  .filter-dot   { width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.5; }
+  .filter-chip:hover  { @apply border-wine-700/50 text-wine-400 bg-wine-900/10; }
+  .filter-chip.active { @apply border-wine-600 text-white bg-wine-700; }
+  .light .filter-chip       { @apply border-gray-200 text-gray-500 bg-white; }
+  .light .filter-chip:hover { @apply border-wine-300 text-wine-600 bg-wine-50; }
+  .light .filter-chip.active{ @apply border-wine-700 text-white bg-wine-700; }
+  .filter-dot { width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.5; }
   .filter-chip.active .filter-dot { opacity:1; }
   .filter-count { padding:1px 6px;border-radius:999px;background:rgba(255,255,255,0.1);font-size:0.62rem; }
   .filter-chip.active .filter-count { background:rgba(255,255,255,0.2); }
@@ -435,7 +413,7 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
   }
   .grid-card:hover .spotlight { opacity:1; }
 
-  /* ── Card ── */
+  /* ── Card base — light mode usa fondo vinotinto oscuro para que el blanco contraste ── */
   .grid-card {
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
   }
@@ -444,34 +422,67 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
     transform: translateY(-3px);
     box-shadow: 0 16px 40px rgba(0,0,0,0.28), 0 0 0 1px rgba(124,45,62,0.1);
   }
+  /* Light mode card bg: wine-900 para que el blanco tenga suficiente contraste */
+  .light .grid-card {
+    background-color: #3b0d14 !important; /* wine-900 equivalente */
+    border-color: rgba(124,45,62,0.35) !important;
+  }
   .light .grid-card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(124,45,62,0.12);
+    border-color: rgba(124,45,62,0.6) !important;
+    box-shadow: 0 12px 32px rgba(59,13,20,0.35), 0 0 0 1px rgba(124,45,62,0.3);
   }
 
-  /* Selected state (when expand is open) */
   .grid-card.is-expanded {
     @apply border-wine-600/50;
     box-shadow: 0 0 0 2px rgba(124,45,62,0.3), 0 16px 40px rgba(0,0,0,0.2);
   }
-  .light .grid-card.is-expanded {
-    box-shadow: 0 0 0 2px rgba(124,45,62,0.25), 0 8px 24px rgba(0,0,0,0.1);
-  }
-
-  /* ── Expand button rotation ── */
-  .grid-card.is-expanded .expand-icon {
-    transform: rotate(180deg);
-  }
+  .grid-card.is-expanded .expand-icon { transform: rotate(180deg); }
   .grid-card.is-expanded .expand-btn {
-    @apply border-wine-600/50 text-wine-400 bg-wine-900/20;
-  }
-  .light .grid-card.is-expanded .expand-btn {
-    @apply border-wine-300 text-wine-600 bg-wine-50;
+    @apply border-wine-500 text-wine-400 bg-wine-900/30;
   }
 
-  /* ── Description expanded ── */
-  .desc-expanded.open {
-    max-height: 400px;
-    opacity: 1;
+  /* ── ✅ Project title: blanco en AMBOS modos ── */
+  .project-title {
+    color: #ffffff !important;
+  }
+  .grid-card:hover .project-title {
+    color: #fda4af !important; /* rose-300 — hover suave en ambos modos */
+  }
+
+  /* ── Expanded description ── */
+  .desc-expanded.open { max-height: 400px; opacity: 1; }
+
+  /* ── Filter animation states ── */
+  .project-card {
+    /* Estado inicial y base para animación */
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Cuando entra: de invisible/pequeño a normal */
+  .project-card.filter-entering {
+    animation: cardEnter 0.35s ease forwards;
+  }
+
+  /* Cuando sale: de normal a invisible/pequeño */
+  .project-card.filter-exiting {
+    animation: cardExit 0.25s ease forwards;
+  }
+
+  .project-card.hidden-filter {
+    display: none;
+  }
+
+  @keyframes cardEnter {
+    from { opacity: 0; transform: scale(0.88) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes cardExit {
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.88); }
   }
 
   /* ── Status badges ── */
@@ -481,11 +492,11 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
     font-family:var(--font-mono,monospace); letter-spacing:0.08em;
     border-radius:4px; backdrop-filter:blur(4px); text-transform:uppercase;
   }
-  .status-live     { background:rgba(16,185,129,0.15); color:rgb(52,211,153); border:1px solid rgba(16,185,129,0.3); }
+  .status-live     { background:rgba(16,185,129,0.15);color:rgb(52,211,153); border:1px solid rgba(16,185,129,0.3); }
   .status-dev      { background:rgba(245,158,11,0.15); color:rgb(251,191,36); border:1px solid rgba(245,158,11,0.3); }
-  .status-archived { background:rgba(100,116,139,0.15); color:rgb(148,163,184); border:1px solid rgba(100,116,139,0.3); }
+  .status-archived { background:rgba(100,116,139,0.15);color:rgb(148,163,184);border:1px solid rgba(100,116,139,0.3); }
 
-  /* ── CTA buttons ── */
+  /* ── CTAs ── */
   .cta-btn {
     display:inline-flex; align-items:center; justify-content:center; gap:5px;
     font-weight:500; border-radius:8px; transition:all 0.2s ease;
@@ -493,40 +504,33 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
   }
   .cta-sm { padding:7px 12px; font-size:0.7rem; }
 
-  .cta-primary { @apply bg-wine-700 text-white; }
+  .cta-primary       { @apply bg-wine-700 text-white; }
   .cta-primary:hover { @apply bg-wine-600; transform:translateY(-1px); }
 
-  .cta-ghost { @apply bg-wine-900/20 text-wine-400 border border-wine-800/40; }
-  .cta-ghost:hover { @apply bg-wine-700 text-white border-wine-700; transform:translateY(-1px); }
+  .cta-ghost         { @apply bg-wine-900/40 text-wine-300 border border-wine-700/50; }
+  .cta-ghost:hover   { @apply bg-wine-700 text-white border-wine-700; transform:translateY(-1px); }
 
-  .light .cta-primary { @apply bg-wine-700 text-white; }
-  .light .cta-ghost { @apply bg-wine-50 text-wine-600 border-wine-200; }
-  .light .cta-ghost:hover { @apply bg-wine-700 text-white border-wine-700; }
+  /* En light mode (card oscura) los ghost también se ven bien así */
+  .light .cta-ghost       { background:rgba(124,45,62,0.25); color:#fda4af; border-color:rgba(124,45,62,0.4); }
+  .light .cta-ghost:hover { @apply bg-wine-600 text-white; border-color:transparent; }
 
-  .cta-disabled { @apply bg-surface-border/30 text-text-muted border border-surface-border/30; opacity:0.45; }
-  .light .cta-disabled { @apply bg-gray-100 text-gray-400 border-gray-200; }
+  .cta-disabled { @apply bg-surface-border/20 text-text-muted border border-surface-border/20; opacity:0.45; }
 
   /* ── Ripple ── */
   .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(124, 45, 62, 0.18);
-    transform: scale(0);
-    animation: ripple-anim 0.55s ease-out forwards;
-    pointer-events: none;
+    position:absolute; border-radius:50%;
+    background:rgba(124,45,62,0.22);
+    transform:scale(0);
+    animation: rippleAnim 0.55s ease-out forwards;
+    pointer-events:none;
   }
-  .light .ripple { background: rgba(124, 45, 62, 0.12); }
-
-  @keyframes ripple-anim {
-    to { transform: scale(4); opacity: 0; }
+  @keyframes rippleAnim {
+    to { transform:scale(4); opacity:0; }
   }
 
   /* ── Modal ── */
   #project-modal.active { display:block; }
   #project-modal-image  { touch-action:none; }
-
-  /* ── Filter hidden ── */
-  .project-card.hidden-filter { display:none; }
 </style>
 
 <script>
@@ -541,59 +545,46 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
       });
     });
 
-    /* ── Ripple effect on card click ── */
+    /* ── Ripple ── */
     document.querySelectorAll<HTMLElement>('.grid-card').forEach(card => {
       card.addEventListener('click', (e: MouseEvent) => {
-        // Don't ripple when clicking links/buttons inside
         const target = e.target as HTMLElement;
-        if (target.closest('a') || target.closest('.project-image-btn')) return;
-
+        if (target.closest('a') || target.closest('.project-image-btn') || target.closest('.expand-btn')) return;
         const container = card.querySelector<HTMLElement>('.ripple-container');
         if (!container) return;
-
-        const r = card.getBoundingClientRect();
+        const r    = card.getBoundingClientRect();
         const size = Math.max(r.width, r.height) * 1.5;
-        const x = e.clientX - r.left - size / 2;
-        const y = e.clientY - r.top - size / 2;
-
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
-        container.appendChild(ripple);
-        ripple.addEventListener('animationend', () => ripple.remove());
+        const x    = e.clientX - r.left - size / 2;
+        const y    = e.clientY - r.top  - size / 2;
+        const el   = document.createElement('span');
+        el.classList.add('ripple');
+        el.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+        container.appendChild(el);
+        el.addEventListener('animationend', () => el.remove());
       });
     });
 
-    /* ── Expand / Collapse description ── */
+    /* ── Expand description ── */
     document.querySelectorAll<HTMLElement>('.grid-card').forEach(card => {
-      const expandBtn  = card.querySelector<HTMLElement>('.expand-btn');
-      const expanded   = card.querySelector<HTMLElement>('.desc-expanded');
-      const preview    = card.querySelector<HTMLElement>('.desc-preview');
-
+      const expandBtn = card.querySelector<HTMLElement>('.expand-btn');
+      const expanded  = card.querySelector<HTMLElement>('.desc-expanded');
+      const preview   = card.querySelector<HTMLElement>('.desc-preview');
       if (!expandBtn || !expanded) return;
 
       expandBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // no disparar ripple del card
+        e.stopPropagation();
         const isOpen = expanded.classList.toggle('open');
         card.classList.toggle('is-expanded', isOpen);
         expandBtn.setAttribute('aria-expanded', String(isOpen));
+        preview?.classList.toggle('hidden', isOpen);
 
-        if (isOpen) {
-          // Ocultar preview para no duplicar texto
-          preview?.classList.add('hidden');
-          // Scroll suave al card en mobile
-          if (window.innerWidth < 768) {
-            setTimeout(() => {
-              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 150);
-          }
-        } else {
-          preview?.classList.remove('hidden');
+        if (isOpen && window.innerWidth < 768) {
+          setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
         }
       });
     });
 
-    /* ── Filter ── */
+    /* ── Filter con animación ── */
     const filterBtns   = document.querySelectorAll<HTMLElement>('.filter-chip');
     const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
 
@@ -601,12 +592,41 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
+
+        const filter   = btn.getAttribute('data-filter');
+        const grid     = document.getElementById('projects-grid');
+        const STAGGER  = 40; // ms entre cada card
+
+        // 1️⃣ Calcular qué cards show/hide
+        const toShow: HTMLElement[] = [];
+        const toHide: HTMLElement[] = [];
 
         projectCards.forEach(card => {
-          const techs = card.getAttribute('data-technologies')?.split(',') || [];
-          const show  = filter === 'all' || techs.includes(filter!);
-          card.classList.toggle('hidden-filter', !show);
+          const techs   = card.getAttribute('data-technologies')?.split(',') || [];
+          const matches = filter === 'all' || techs.includes(filter!);
+          if (matches) toShow.push(card);
+          else         toHide.push(card);
+        });
+
+        // 2️⃣ Animar salida de las que se ocultan
+        toHide.forEach((card, i) => {
+          card.classList.remove('filter-entering');
+          card.classList.add('filter-exiting');
+          setTimeout(() => {
+            card.classList.add('hidden-filter');
+            card.classList.remove('filter-exiting');
+          }, 250); // match con cardExit duration
+        });
+
+        // 3️⃣ Animar entrada de las que aparecen (con stagger)
+        toShow.forEach((card, i) => {
+          card.classList.remove('hidden-filter', 'filter-exiting');
+          // Pequeño delay para que las salidas empiecen primero
+          setTimeout(() => {
+            card.classList.remove('filter-entering');
+            void (card as HTMLElement).offsetWidth; // force reflow
+            card.classList.add('filter-entering');
+          }, 60 + i * STAGGER);
         });
       });
     });
@@ -621,47 +641,47 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
     const zoomLevel      = document.getElementById('zoom-level');
     const zoomLevelM     = document.getElementById('zoom-level-mobile');
 
-    let scale = 1, tx = 0, ty = 0, dragging = false, sx = 0, sy = 0;
-    const MIN = 0.5, MAX = 4, STEP = 0.25;
+    let scale=1, tx=0, ty=0, dragging=false, sx=0, sy=0;
+    const MIN=0.5, MAX=4, STEP=0.25;
 
-    const applyTransform = () => { if (modalImage) modalImage.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`; };
-    const applyDisplay   = () => { const p = Math.round(scale*100)+'%'; if(zoomLevel) zoomLevel.textContent=p; if(zoomLevelM) zoomLevelM.textContent=p; };
-    const resetZoom      = () => { scale=1;tx=0;ty=0;applyTransform();applyDisplay(); };
-    const zoomIn         = () => { if(scale<MAX){scale=Math.min(scale+STEP,MAX);applyTransform();applyDisplay();} };
-    const zoomOut        = () => { if(scale>MIN){scale=Math.max(scale-STEP,MIN);if(scale<=1){tx=0;ty=0;}applyTransform();applyDisplay();} };
+    const applyT = () => { if(modalImage) modalImage.style.transform=`translate(${tx}px,${ty}px) scale(${scale})`; };
+    const applyD = () => { const p=Math.round(scale*100)+'%'; if(zoomLevel)zoomLevel.textContent=p; if(zoomLevelM)zoomLevelM.textContent=p; };
+    const resetZ = () => { scale=1;tx=0;ty=0;applyT();applyD(); };
+    const zIn    = () => { if(scale<MAX){scale=Math.min(scale+STEP,MAX);applyT();applyD();} };
+    const zOut   = () => { if(scale>MIN){scale=Math.max(scale-STEP,MIN);if(scale<=1){tx=0;ty=0;}applyT();applyD();} };
 
-    imageContainer?.addEventListener('wheel', e => { e.preventDefault(); e.deltaY<0?zoomIn():zoomOut(); }, {passive:false});
-    imageContainer?.addEventListener('mousedown', e => { if(scale>1){dragging=true;sx=e.clientX-tx;sy=e.clientY-ty;(imageContainer as HTMLElement).style.cursor='grabbing';} });
-    document.addEventListener('mousemove', e => { if(dragging){tx=e.clientX-sx;ty=e.clientY-sy;applyTransform();} });
-    document.addEventListener('mouseup', () => { dragging=false; if(imageContainer)(imageContainer as HTMLElement).style.cursor=scale>1?'grab':'default'; });
+    imageContainer?.addEventListener('wheel', e=>{e.preventDefault();e.deltaY<0?zIn():zOut();},{passive:false});
+    imageContainer?.addEventListener('mousedown', e=>{if(scale>1){dragging=true;sx=e.clientX-tx;sy=e.clientY-ty;(imageContainer as HTMLElement).style.cursor='grabbing';}});
+    document.addEventListener('mousemove', e=>{if(dragging){tx=e.clientX-sx;ty=e.clientY-sy;applyT();}});
+    document.addEventListener('mouseup', ()=>{dragging=false;if(imageContainer)(imageContainer as HTMLElement).style.cursor=scale>1?'grab':'default';});
 
-    let lastDist=0, lastTX=0, lastTY=0;
-    imageContainer?.addEventListener('touchstart', e => {
-      if(e.touches.length===2) lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+    let lastD=0, lastTX=0, lastTY=0;
+    imageContainer?.addEventListener('touchstart', e=>{
+      if(e.touches.length===2) lastD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
       else if(e.touches.length===1&&scale>1){dragging=true;lastTX=e.touches[0].clientX-tx;lastTY=e.touches[0].clientY-ty;}
     },{passive:true});
-    imageContainer?.addEventListener('touchmove', e => {
+    imageContainer?.addEventListener('touchmove', e=>{
       if(e.touches.length===2){
-        const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
-        if(lastDist>0){const delta=d-lastDist;if(delta>0&&scale<MAX)scale=Math.min(scale+0.02,MAX);else if(delta<0&&scale>MIN)scale=Math.max(scale-0.02,MIN);applyTransform();applyDisplay();}lastDist=d;
-      }else if(e.touches.length===1&&dragging){tx=e.touches[0].clientX-lastTX;ty=e.touches[0].clientY-lastTY;applyTransform();}
+        const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+        if(lastD>0){const delta=d-lastD;if(delta>0&&scale<MAX)scale=Math.min(scale+0.02,MAX);else if(delta<0&&scale>MIN)scale=Math.max(scale-0.02,MIN);applyT();applyD();}lastD=d;
+      }else if(e.touches.length===1&&dragging){tx=e.touches[0].clientX-lastTX;ty=e.touches[0].clientY-lastTY;applyT();}
     },{passive:true});
-    imageContainer?.addEventListener('touchend', () => {dragging=false;lastDist=0;});
+    imageContainer?.addEventListener('touchend',()=>{dragging=false;lastD=0;});
 
-    document.getElementById('zoom-in-btn')?.addEventListener('click', zoomIn);
-    document.getElementById('zoom-out-btn')?.addEventListener('click', zoomOut);
-    document.getElementById('zoom-reset-btn')?.addEventListener('click', resetZoom);
-    document.getElementById('zoom-in-btn-mobile')?.addEventListener('click', zoomIn);
-    document.getElementById('zoom-out-btn-mobile')?.addEventListener('click', zoomOut);
+    document.getElementById('zoom-in-btn')?.addEventListener('click',zIn);
+    document.getElementById('zoom-out-btn')?.addEventListener('click',zOut);
+    document.getElementById('zoom-reset-btn')?.addEventListener('click',resetZ);
+    document.getElementById('zoom-in-btn-mobile')?.addEventListener('click',zIn);
+    document.getElementById('zoom-out-btn-mobile')?.addEventListener('click',zOut);
 
     document.querySelectorAll('.project-image-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const image = btn.getAttribute('data-image');
         const title = btn.getAttribute('data-title');
-        if (image && modalImage && modalTitle && modal) {
-          resetZoom();
+        if(image && modalImage && modalTitle && modal){
+          resetZ();
           modalImage.src = image;
-          modalTitle.textContent = title || '';
+          modalTitle.textContent = title||'';
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
         }
@@ -670,17 +690,17 @@ const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
 
     const closeModal = () => {
       modal?.classList.remove('active');
-      document.body.style.overflow = '';
-      resetZoom();
+      document.body.style.overflow='';
+      resetZ();
     };
-    modalClose?.addEventListener('click', closeModal);
-    modalBackdrop?.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => {
-      if(e.key==='Escape') closeModal();
+    modalClose?.addEventListener('click',closeModal);
+    modalBackdrop?.addEventListener('click',closeModal);
+    document.addEventListener('keydown', e=>{
+      if(e.key==='Escape')closeModal();
       if(modal?.classList.contains('active')){
-        if(e.key==='+'||e.key==='=') zoomIn();
-        if(e.key==='-') zoomOut();
-        if(e.key==='0') resetZoom();
+        if(e.key==='+'||e.key==='=')zIn();
+        if(e.key==='-')zOut();
+        if(e.key==='0')resetZ();
       }
     });
   });
