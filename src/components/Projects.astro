@@ -10,30 +10,11 @@ const t = getTranslations(lang);
 
 const projects = [
   {
-    title: ' Transcriptor AI Audio',
-    description: lang === 'es'
-      ? 'Herramienta CLI en Python para transcribir audios locales, videos de YouTube y reels de Instagram usando el modelo OpenAI Whisper. Soporta FFmpeg para notas de voz de WhatsApp y extrae timestamps automáticos.'
-      : 'Python CLI tool to transcribe local audio, YouTube videos, and Instagram reels using OpenAI Whisper. Features FFmpeg support for WhatsApp voice notes and automatic timestamp extraction.',
-    image: '/images/projects/transcrip.webp',
-    technologies: ['Python', 'OpenAI Whisper'],
-    github: 'https://github.com/SrCidm/Transcriptor',
-    live: '',
-  },
-  {
-    title: 'Youingtik Downloader Pro',
-    description: lang === 'es'
-      ? 'Aplicación de escritorio moderna con UI oscura (CustomTkinter) para descargar videos de YouTube en HD, extraer audio y transcribirlo automáticamente. Soporta 9 idiomas y procesamiento local.'
-      : 'Modern desktop application with dark UI (CustomTkinter) to download HD YouTube videos, extract audio, and auto-transcribe. Supports 9 languages and local processing.',
-    image: '/images/projects/YTPRO.webp',
-    technologies: ['Python', 'CustomTkinter','Tkinter', 'OpenAI Whisper'],
-    github: 'https://github.com/SrCidm/youtubeDownloader',
-    live: '',
-  },
-  {
     title: 'CHIGUI',
+    status: 'live',
     description: lang === 'es'
       ? 'CHIGUI — Aplicación PWA de aprendizaje de español impulsada por IA. Tutor conversacional con voz, reconocimiento de imágenes y aprendizaje adaptativo. Full‑stack: Next.js 14 (frontend), FastAPI (backend), Firebase para auth y almacenamiento, e integración con Gemini AI para generación de respuestas y voz. Soporta modo offline como PWA y está optimizada para móviles.'
-      : 'CHIGUI — AI-powered Spanish learning PWA. Conversational tutor with voice, image recognition and adaptive learning. Full‑stack: Next.js 14 (frontend), FastAPI (backend), Firebase for auth/storage, and Gemini AI for generation and voice. PWA-enabled and mobile-optimized.',
+      : 'AI-powered Spanish learning PWA. Conversational tutor with voice, image recognition and adaptive learning. Full‑stack: Next.js 14, FastAPI, Firebase for auth/storage, and Gemini AI for generation and voice. PWA-enabled and mobile-optimized.',
     image: '/images/projects/chigui.webp',
     technologies: ['Next.js', 'FastAPI', 'TypeScript', 'Python', 'Firebase', 'Gemini AI', 'PWA', 'Vercel'],
     github: 'https://github.com/SrCidm/chigui',
@@ -41,39 +22,65 @@ const projects = [
   },
   {
     title: 'Portfolio de Artista',
+    status: 'live',
     description: lang === 'es'
       ? 'Portfolio web bilingüe para artista contemporáneo especializado en arte cinético y esculturas lumínicas. Incluye hero animado con 25 frames stop-motion usando Canvas API nativo, galería lightbox con 67 obras, y sistema i18n personalizado. Optimizado con Astro SSG para máxima performance.'
-      : 'Bilingual portfolio website for contemporary artist specializing in kinetic art and light sculptures. Features animated hero with 25-frame stop-motion using native Canvas API, lightbox gallery with 67 artworks, and custom i18n system. Optimized with Astro SSG for maximum performance.',
+      : 'Bilingual portfolio for contemporary artist specializing in kinetic art and light sculptures. Animated hero with 25-frame stop-motion via Canvas API, lightbox gallery with 67 artworks, and custom i18n system. Optimized with Astro SSG.',
     image: '/images/projects/Ricardopage.webp',
-    technologies: ['Astro', 'TypeScript', 'Tailwind CSS', 'Canvas API', 'Web3Forms'],
+    technologies: ['Astro', 'TypeScript', 'Tailwind CSS', 'Canvas API'],
     github: 'https://github.com/SrCidm/web-ricardo-laverde',
     live: 'https://ricardolaverde.vercel.app/',
   },
   {
-    title: 'Ofertas Destacadas Page',
+    title: 'Transcriptor AI Audio',
+    status: 'live',
     description: lang === 'es'
-      ? 'Una web moderna de productos de afiliado de Amazon, construida con Astro para máximo rendimiento y SEO.'
-      : 'A modern Amazon affiliate website built with Astro for maximum performance and SEO.',
+      ? 'Herramienta CLI en Python para transcribir audios locales, videos de YouTube y reels de Instagram usando el modelo OpenAI Whisper. Soporta FFmpeg para notas de voz de WhatsApp y extrae timestamps automáticos. Ideal para periodistas, podcasters y creadores de contenido.'
+      : 'Python CLI tool to transcribe local audio, YouTube videos, and Instagram reels using OpenAI Whisper. Features FFmpeg support for WhatsApp voice notes and automatic timestamp extraction. Ideal for journalists, podcasters and content creators.',
+    image: '/images/projects/transcrip.webp',
+    technologies: ['Python', 'OpenAI Whisper'],
+    github: 'https://github.com/SrCidm/Transcriptor',
+    live: '',
+  },
+  {
+    title: 'Youingtik Downloader Pro',
+    status: 'dev',
+    description: lang === 'es'
+      ? 'Aplicación de escritorio moderna con UI oscura (CustomTkinter) para descargar videos de YouTube en HD, extraer audio y transcribirlo automáticamente. Soporta 9 idiomas y procesamiento completamente local, sin enviar datos a servidores externos.'
+      : 'Modern desktop application with dark UI (CustomTkinter) to download HD YouTube videos, extract audio, and auto-transcribe. Supports 9 languages and fully local processing — no data sent to external servers.',
+    image: '/images/projects/YTPRO.webp',
+    technologies: ['Python', 'CustomTkinter', 'Tkinter', 'OpenAI Whisper'],
+    github: 'https://github.com/SrCidm/youtubeDownloader',
+    live: '',
+  },
+  {
+    title: 'Ofertas Destacadas Page',
+    status: 'live',
+    description: lang === 'es'
+      ? 'Web moderna de productos de afiliado de Amazon construida con Astro para máximo rendimiento y SEO. Incluye sistema de filtros, páginas de producto y optimización de Core Web Vitals para maximizar conversiones orgánicas.'
+      : 'Modern Amazon affiliate website built with Astro for maximum performance and SEO. Includes filtering system, product pages and Core Web Vitals optimization to maximize organic conversions.',
     image: '/images/projects/OD2.webp',
-    technologies: ['Astro', 'TypeScript',],
+    technologies: ['Astro', 'TypeScript'],
     github: 'https://github.com/SrCidm/OD',
     live: 'https://ofertasdestacadas.netlify.app/',
   },
-    {
-      title: 'Pokémon Battle Simulator',
+  {
+    title: 'Pokémon Battle Simulator',
+    status: 'archived',
     description: lang === 'es'
-      ? 'Este proyecto utiliza PyQt5 para crear una interfaz gráfica de usuario (GUI) que permite buscar Pokémon, ver sus estadísticas y simular batallas entre ellos. La aplicación aprovecha la PokéAPI para obtener datos y ofrece una forma divertida e interactiva de explorar el universo Pokémon.'
-      : 'This project uses PyQt5 to create a graphical user interface (GUI) that allows you to search for Pokémon, view their stats, and simulate battles between two Pokémon. The application leverages the PokéAPI to fetch Pokémon data and provides a fun and interactive way to explore the Pokémon universe.',
+      ? 'GUI en PyQt5 para buscar Pokémon, ver estadísticas y simular batallas entre dos Pokémon. Consume la PokéAPI para datos en tiempo real e implementa un sistema de combate por turnos con cálculo de daño basado en estadísticas reales.'
+      : 'PyQt5 GUI to search Pokémon, view stats, and simulate turn-based battles. Consumes PokéAPI for real-time data and implements a damage calculation system based on real Pokémon stats.',
     image: '/images/projects/pokemonBattle.webp',
     technologies: ['Python', 'API'],
     github: 'https://github.com/SrCidm/crypto-pagev1',
     live: null,
   },
   {
-      title: 'Crypto Page',
+    title: 'Crypto Page',
+    status: 'archived',
     description: lang === 'es'
-      ? 'Aplicación web para visualización de datos de criptomonedas en tiempo real con gráficos históricos interactivos y carrusel de tendencias.'
-      : 'Web application for real-time cryptocurrency data visualization with interactive historical charts and trending carousel.',
+      ? 'Aplicación web para visualización de datos de criptomonedas en tiempo real con gráficos históricos interactivos y carrusel de tendencias. Construida con React y Material-UI, consume APIs financieras para mostrar precios, volúmenes y variaciones de mercado.'
+      : 'Web app for real-time cryptocurrency data visualization with interactive historical charts and trending carousel. Built with React and Material-UI, consuming financial APIs to display prices, volumes and market variations.',
     image: '/images/projects/svgp1.webp',
     technologies: ['React', 'JavaScript', 'Material-UI', 'API'],
     github: 'https://github.com/SrCidm/crypto-pagev1',
@@ -81,9 +88,10 @@ const projects = [
   },
   {
     title: 'MeetHub',
+    status: 'archived',
     description: lang === 'es'
-      ? 'Plataforma para organización y gestión de reuniones empresariales con programación, gestión de invitaciones e integración de calendario.'
-      : 'Platform for organizing and managing business meetings with scheduling, invitation management, and calendar integration.',
+      ? 'Plataforma para organización y gestión de reuniones empresariales con programación, gestión de invitaciones e integración de calendario. Diseñada con Next.js y Firebase para actualizaciones en tiempo real entre todos los participantes.'
+      : 'Business meeting management platform with scheduling, invitation management, and calendar integration. Built with Next.js and Firebase for real-time updates across all participants.',
     image: '/images/projects/mh.webp',
     technologies: ['Next.js', 'JavaScript', 'Tailwind'],
     github: 'https://github.com/SrCidm/MeetHub-Meeting-page',
@@ -91,9 +99,10 @@ const projects = [
   },
   {
     title: 'My Weather App',
+    status: 'archived',
     description: lang === 'es'
-      ? 'Aplicación del clima usando Svelte que muestra datos meteorológicos actuales y futuros con búsqueda de ubicación.'
-      : 'Weather application using Svelte displaying current and future weather data with location search functionality.',
+      ? 'Aplicación del clima usando Svelte que muestra datos meteorológicos actuales y pronóstico extendido con búsqueda de ubicación por nombre o geolocalización. Incluye visualización de humedad, viento y probabilidad de lluvia.'
+      : 'Weather app using Svelte displaying current weather and extended forecast with location search by name or geolocation. Includes humidity, wind and rain probability visualization.',
     image: '/images/projects/mwapp.webp',
     technologies: ['Svelte', 'JavaScript', 'CSS', 'API'],
     github: 'https://github.com/SrCidm/my-Weather-App',
@@ -101,9 +110,10 @@ const projects = [
   },
   {
     title: 'Crypto-Tracker',
+    status: 'archived',
     description: lang === 'es'
-      ? 'Aplicación de escritorio en Python con Tkinter para obtener información de criptomonedas usando la API de CoinMarketCap.'
-      : 'Desktop application developed in Python with Tkinter to retrieve cryptocurrency information using the CoinMarketCap API.',
+      ? 'Aplicación de escritorio en Python con Tkinter para obtener información de criptomonedas usando la API de CoinMarketCap. Muestra precios en tiempo real, capitalización de mercado y variaciones en 24h con interfaz gráfica limpia.'
+      : 'Python desktop app with Tkinter to retrieve cryptocurrency info using the CoinMarketCap API. Displays real-time prices, market cap and 24h variations with a clean graphical interface.',
     image: '/images/projects/criptotracker.webp',
     technologies: ['Python', 'Tkinter', 'API'],
     github: 'https://github.com/SrCidm/Crypto-Tracker',
@@ -111,501 +121,543 @@ const projects = [
   },
   {
     title: 'Ofertas Destacadas',
+    status: 'archived',
     description: lang === 'es'
-      ? 'Plataforma web para mostrar videos promocionales de productos destacados con enlaces a Amazon.'
-      : 'Web platform showcasing promotional videos for featured products with Amazon links.',
+      ? 'Plataforma web para mostrar videos promocionales de productos destacados con enlaces directos a Amazon. Desarrollada con Python para el backend y HTML/CSS para una presentación visual atractiva de los productos.'
+      : 'Web platform showcasing promotional videos for featured products with direct Amazon links. Developed with Python backend and HTML/CSS for an attractive visual presentation of products.',
     image: '/images/projects/OD.webp',
     technologies: ['Python', 'HTML', 'CSS'],
     github: 'https://github.com/SrCidm/OD',
-    live: null
+    live: null,
   },
 ];
 
 const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].sort();
-const zoomInText = lang === 'es' ? 'Acercar' : 'Zoom in';
-const zoomOutText = lang === 'es' ? 'Alejar' : 'Zoom out';
-const resetText = lang === 'es' ? 'Restablecer' : 'Reset';
-const closeText = lang === 'es' ? 'Cerrar' : 'Close';
-const dragHint = lang === 'es' ? 'Usa la rueda del mouse o los botones para hacer zoom. Arrastra para mover.' : 'Use mouse wheel or buttons to zoom. Drag to move.';
+
+const statusLabel = {
+  live:     lang === 'es' ? 'En Vivo'    : 'Live',
+  dev:      lang === 'es' ? 'En Dev'     : 'In Dev',
+  archived: lang === 'es' ? 'Archivado'  : 'Archived',
+};
+
+const readMoreText  = lang === 'es' ? 'Leer más'   : 'Read more';
+const readLessText  = lang === 'es' ? 'Leer menos' : 'Read less';
+const closeText     = lang === 'es' ? 'Cerrar'     : 'Close';
+const zoomInText    = lang === 'es' ? 'Acercar'    : 'Zoom in';
+const zoomOutText   = lang === 'es' ? 'Alejar'     : 'Zoom out';
+const resetText     = lang === 'es' ? 'Restablecer': 'Reset';
+const dragHint      = lang === 'es'
+  ? 'Rueda del mouse para zoom · Arrastra para mover'
+  : 'Mouse wheel to zoom · Drag to pan';
+const viewCodeText  = lang === 'es' ? 'Ver código' : 'View code';
+const viewLiveText  = lang === 'es' ? 'Ver en vivo': 'View live';
+const noDemoText    = lang === 'es' ? 'Sin demo'   : 'No demo';
 ---
 
-<section id="projects" class="py-20 lg:py-32 bg-surface-darker/50 light:bg-gray-50/50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="section-title">{t.projects.title}</h2>
-      <p class="section-subtitle mt-2">{t.projects.subtitle}</p>
+<section id="projects" class="py-24 lg:py-36 relative overflow-hidden">
+
+  <!-- Subtle grid bg -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+    <div class="proj-grid-bg"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- ── Header ── -->
+    <div class="mb-16 scroll-reveal">
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <p class="text-wine-400 light:text-wine-600 text-xs font-mono tracking-[0.2em] uppercase mb-3">
+            {lang === 'es' ? '// Portafolio selecto' : '// Selected work'}
+          </p>
+          <h2 class="text-4xl md:text-6xl font-display font-bold text-text-primary light:text-gray-900 leading-none">
+            {lang === 'es' ? 'Proyectos' : 'Projects'}
+            <span class="block text-wine-500/30 light:text-wine-300/50 text-2xl md:text-3xl font-light tracking-widest mt-1">
+              {String(projects.length).padStart(2, '0')} {lang === 'es' ? 'trabajos' : 'builds'}
+            </span>
+          </h2>
+        </div>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 light:text-emerald-600 text-xs font-mono">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          {projects.filter(p => p.status === 'live').length} {lang === 'es' ? 'en producción' : 'in production'}
+        </span>
+      </div>
+      <div class="mt-8 flex items-center gap-4">
+        <div class="h-px flex-1 bg-gradient-to-r from-wine-700/60 via-wine-700/20 to-transparent"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-wine-600"></div>
+      </div>
     </div>
 
-    <!-- Technology Filters -->
-    <div class="flex flex-wrap justify-center gap-2 mb-12 scroll-reveal delay-100" id="filters">
-      <button class="filter-btn active" data-filter="all">
-        {t.projects.filterAll}
+    <!-- ── Filters ── -->
+    <div class="flex flex-wrap gap-2 mb-12 scroll-reveal delay-100" id="filters">
+      <button class="filter-chip active" data-filter="all">
+        <span class="filter-dot"></span>
+        {lang === 'es' ? 'Todos' : 'All'}
+        <span class="filter-count">{projects.length}</span>
       </button>
-      {allTechnologies.map(tech => (
-        <button class="filter-btn" data-filter={tech.toLowerCase()}>
-          {tech}
-        </button>
-      ))}
+      {allTechnologies.map(tech => {
+        const count = projects.filter(p =>
+          p.technologies.map(t => t.toLowerCase()).includes(tech.toLowerCase())
+        ).length;
+        return (
+          <button class="filter-chip" data-filter={tech.toLowerCase()}>
+            <span class="filter-dot"></span>
+            {tech}
+            <span class="filter-count">{count}</span>
+          </button>
+        );
+      })}
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+    <!-- ── Grid ── -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projects-grid">
       {projects.map((project, index) => (
-        <article 
-          class="card group overflow-hidden project-card scroll-reveal-scale"
+        <article
+          class="project-card grid-card group relative rounded-xl border border-surface-border light:border-gray-200 bg-surface-card light:bg-white overflow-hidden scroll-reveal-scale"
           data-technologies={project.technologies.map(t => t.toLowerCase()).join(',')}
-          style={`transition-delay: ${index * 100}ms`}
+          data-index={index}
+          style={`transition-delay: ${index * 50}ms`}
         >
-          <!-- Project Image -->
-          <div 
-            class="aspect-video bg-gradient-to-br from-wine-900/20 to-surface-border light:from-wine-100 light:to-gray-200 rounded-lg mb-4 overflow-hidden relative cursor-pointer project-image-btn"
+          <!-- Spotlight -->
+          <div class="spotlight" aria-hidden="true"></div>
+
+          <!-- Image — click abre modal zoom -->
+          <div
+            class="relative aspect-[16/9] overflow-hidden cursor-pointer project-image-btn"
             data-image={project.image}
             data-title={project.title}
           >
-            <img 
-              src={project.image} 
+            <img
+              src={project.image}
               alt={project.title}
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading={index < 3 ? 'eager' : 'lazy'}
             />
-            <!-- Hover overlay with icon -->
-            <div class="absolute inset-0 bg-wine-700/0 group-hover:bg-wine-700/30 transition-all duration-300 flex items-center justify-center">
-              <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/20 backdrop-blur-sm p-3 rounded-full">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-card/80 via-transparent to-transparent light:from-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3">
+              <div class="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
               </div>
             </div>
 
-            <!-- Mobile Hint Badge -->
-            <span class="absolute top-2 right-2 flex h-3 w-3 sm:hidden">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-wine-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-wine-500"></span>
+            <!-- Status badge -->
+            <div class="absolute top-3 left-3">
+              <span class={`status-badge status-${project.status}`}>
+                {project.status === 'live' && (
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block mr-1"></span>
+                )}
+                {statusLabel[project.status as keyof typeof statusLabel]}
+              </span>
+            </div>
+
+            <!-- Number -->
+            <span class="absolute bottom-2 right-3 font-mono text-white/15 text-3xl font-bold select-none leading-none">
+              {String(index + 1).padStart(2, '0')}
             </span>
           </div>
 
-          <!-- Project Info -->
-          <div class="space-y-3">
-            <h3 class="text-lg font-display font-semibold text-text-primary group-hover:text-wine-400 light:group-hover:text-wine-600 transition-colors">
-              {project.title}
-            </h3>
-            
-            <div class="description-container relative overflow-hidden transition-all duration-300 max-h-[4.5rem] light:bg-wine-50/30 light:border light:border-wine-100 light:rounded-lg light:p-3 p-2">
-              <p class="project-description text-text-secondary light:text-gray-700 text-sm leading-relaxed line-clamp-3">
-                {project.description}
-              </p>
-              
-              <div class="description-overlay absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-surface-card to-transparent light:from-wine-50 light:to-transparent transition-opacity duration-300"></div>
-            </div>
-            
-            <button class="read-more-btn text-xs font-semibold text-wine-400 light:text-wine-600 hover:text-wine-300 light:hover:text-wine-800 transition-colors mt-1 hidden" data-read-more={t.projects.readMore} data-show-less={t.projects.showLess}>
-              {t.projects.readMore}
-            </button>
+          <!-- Card Content -->
+          <div class="p-5 flex flex-col gap-3">
 
-            <!-- Technologies -->
-            <div class="flex flex-wrap gap-2 pt-2">
-              {project.technologies.map(tech => (
-                <span class="tech-badge">{tech}</span>
+            <!-- Title row -->
+            <div class="flex items-start justify-between gap-2">
+              <h3 class="font-display font-semibold text-base text-text-primary light:text-white-900 group-hover:text-wine-400 light:group-hover:text-black-900 transition-colors leading-snug">
+                {project.title}
+              </h3>
+              <!-- Expand toggle button -->
+              <button
+                class="expand-btn shrink-0 w-7 h-7 rounded-lg border border-surface-border light:border-gray-200 bg-surface-darker/50 light:bg-gray-50 flex items-center justify-center text-text-muted light:text-gray-400 hover:border-wine-600/50 hover:text-wine-400 light:hover:text-wine-600 transition-all duration-200"
+                aria-label={readMoreText}
+                aria-expanded="false"
+              >
+                <svg class="expand-icon w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Description preview (always 2 lines) -->
+            <p class="desc-preview text-text-muted light:text-gray-500 text-xs leading-relaxed line-clamp-2">
+              {project.description}
+            </p>
+
+            <!-- Expanded description panel -->
+            <div class="desc-expanded overflow-hidden transition-all duration-400 ease-in-out max-h-0 opacity-0">
+              <div class="desc-inner pt-1 pb-2 border-t border-surface-border/40 light:border-gray-100">
+                <p class="text-text-secondary light:text-gray-600 text-xs leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+            </div>
+
+            <!-- Tech badges -->
+            <div class="flex flex-wrap gap-1.5">
+              {project.technologies.slice(0, 4).map(tech => (
+                <span class="tech-badge text-[10px] px-2 py-0.5">{tech}</span>
               ))}
+              {project.technologies.length > 4 && (
+                <span class="tech-badge text-[10px] px-2 py-0.5 opacity-60">
+                  +{project.technologies.length - 4}
+                </span>
+              )}
             </div>
 
-            <!-- Links Stylized for Symmetry -->
-            <div class="flex items-center gap-3 pt-4 border-t border-surface-border light:border-gray-100">
+            <!-- CTAs -->
+            <div class="flex gap-2 pt-2 border-t border-surface-border/50 light:border-gray-100 mt-auto">
               {project.github && (
-                <a 
+                <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-wine-900/30 light:bg-wine-50 text-wine-400 light:text-wine-600 hover:bg-wine-700 hover:text-white transition-all text-xs font-medium"
+                  class="cta-btn cta-ghost cta-sm flex-1"
                 >
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                   </svg>
-                  {t.projects.viewCode}
+                  Code
                 </a>
               )}
-              {project.live && (
-                <a 
+              {project.live ? (
+                <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-wine-900/30 light:bg-wine-50 text-wine-400 light:text-wine-600 hover:bg-wine-700 hover:text-white transition-all text-xs font-medium"
+                  class="cta-btn cta-primary cta-sm flex-1"
                 >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                   </svg>
-                  {t.projects.viewLive}
+                  Live
                 </a>
+              ) : (
+                <span class="cta-btn cta-disabled cta-sm flex-1 cursor-default select-none">
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                  {noDemoText}
+                </span>
               )}
             </div>
           </div>
+
+          <!-- Click ripple container -->
+          <div class="ripple-container absolute inset-0 pointer-events-none overflow-hidden rounded-xl" aria-hidden="true"></div>
         </article>
       ))}
     </div>
   </div>
 </section>
 
-<!-- Project Image Modal with Zoom -->
+<!-- ── Zoom Modal ── -->
 <div id="project-modal" class="fixed inset-0 z-50 hidden">
-  <!-- Backdrop -->
-  <div id="project-modal-backdrop" class="absolute inset-0 bg-black/90"></div>
-  
-  <!-- Modal Content -->
+  <div id="project-modal-backdrop" class="absolute inset-0 bg-black/95 backdrop-blur-sm"></div>
   <div class="relative flex flex-col h-full">
-    <!-- Top Bar -->
     <div class="flex items-center justify-between p-4 text-white z-10">
-      <!-- Title -->
-      <h3 id="project-modal-title" class="text-lg font-display font-semibold"></h3>
-      
-      <!-- Controls -->
-      <div class="flex items-center gap-2">
-        <!-- Zoom Controls -->
+      <h3 id="project-modal-title" class="text-base font-display font-semibold truncate pr-4"></h3>
+      <div class="flex items-center gap-2 shrink-0">
         <div class="hidden sm:flex items-center gap-1 bg-white/10 rounded-lg p-1">
-          <button 
-            id="zoom-out-btn"
-            class="p-2 hover:bg-white/20 rounded-lg transition-colors"
-            title={zoomOutText}
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
-            </svg>
+          <button id="zoom-out-btn" class="p-2 hover:bg-white/20 rounded-lg transition-colors" title={zoomOutText}>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7"/></svg>
           </button>
-          <span id="zoom-level" class="text-sm min-w-[3rem] text-center">100%</span>
-          <button 
-            id="zoom-in-btn"
-            class="p-2 hover:bg-white/20 rounded-lg transition-colors"
-            title={zoomInText}
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-            </svg>
+          <span id="zoom-level" class="text-xs min-w-[2.5rem] text-center font-mono">100%</span>
+          <button id="zoom-in-btn" class="p-2 hover:bg-white/20 rounded-lg transition-colors" title={zoomInText}>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
           </button>
-          <button 
-            id="zoom-reset-btn"
-            class="p-2 hover:bg-white/20 rounded-lg transition-colors"
-            title={resetText}
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
+          <button id="zoom-reset-btn" class="p-2 hover:bg-white/20 rounded-lg transition-colors" title={resetText}>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           </button>
         </div>
-        
-        <!-- Close Button -->
-        <button 
-          id="project-modal-close" 
-          class="p-2 hover:bg-white/20 rounded-lg transition-colors"
-          title={closeText}
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <button id="project-modal-close" class="p-2 hover:bg-white/20 rounded-lg transition-colors" title={closeText}>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
     </div>
-    
-    <!-- Hint text -->
-    <p class="hidden sm:block text-white/50 text-xs text-center pb-2">{dragHint}</p>
-    
-    <!-- Image Container -->
-    <div 
-      id="image-container" 
-      class="flex-1 overflow-hidden cursor-grab active:cursor-grabbing flex items-center justify-center"
-    >
-      <img 
-        id="project-modal-image" 
-        src="" 
-        alt="Project" 
-        class="max-w-[85vw] md:max-w-[60vw] max-h-[70vh] md:max-h-[80vh] rounded-xl shadow-2xl transition-transform duration-100 select-none"
-        draggable="false"
-      />
+    <p class="hidden sm:block text-white/40 text-xs text-center pb-2 font-mono">{dragHint}</p>
+    <div id="image-container" class="flex-1 overflow-hidden cursor-grab active:cursor-grabbing flex items-center justify-center">
+      <img id="project-modal-image" src="" alt="Project"
+        class="max-w-[90vw] md:max-w-[65vw] max-h-[72vh] md:max-h-[82vh] rounded-xl shadow-2xl transition-transform duration-100 select-none"
+        draggable="false"/>
     </div>
-    
-    <!-- Mobile Zoom Controls -->
-    <div class="sm:hidden flex items-center justify-center gap-4 p-4 bg-black/50">
-      <button 
-        id="zoom-out-btn-mobile"
-        class="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-      >
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-        </svg>
+    <div class="sm:hidden flex items-center justify-center gap-6 p-4">
+      <button id="zoom-out-btn-mobile" class="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
       </button>
-      <span id="zoom-level-mobile" class="text-white text-sm min-w-[3rem] text-center">100%</span>
-      <button 
-        id="zoom-in-btn-mobile"
-        class="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-      >
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-        </svg>
+      <span id="zoom-level-mobile" class="text-white text-sm min-w-[3rem] text-center font-mono">100%</span>
+      <button id="zoom-in-btn-mobile" class="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
       </button>
     </div>
   </div>
 </div>
 
 <style>
-  .filter-btn {
-    @apply px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
-           text-text-secondary bg-surface-card border border-surface-border
-           hover:text-wine-400 hover:border-wine-700/50;
+  /* ── Grid background ── */
+  .proj-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(114,47,55,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(114,47,55,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+  .light .proj-grid-bg {
+    background-image:
+      linear-gradient(rgba(114,47,55,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(114,47,55,0.07) 1px, transparent 1px);
   }
 
-  .filter-btn.active {
-    @apply bg-wine-700 text-white border-wine-700;
+  /* ── Filter chips ── */
+  .filter-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; font-size: 0.72rem; font-weight: 500;
+    font-family: var(--font-mono, monospace); border-radius: 999px;
+    border: 1px solid; transition: all 0.2s ease; cursor: pointer;
+    @apply border-surface-border text-text-muted bg-surface-card;
+  }
+  .filter-chip:hover    { @apply border-wine-700/50 text-wine-400 bg-wine-900/10; }
+  .filter-chip.active   { @apply border-wine-600 text-white bg-wine-700; }
+  .light .filter-chip   { @apply border-gray-200 text-gray-500 bg-white; }
+  .light .filter-chip:hover  { @apply border-wine-300 text-wine-600 bg-wine-50; }
+  .light .filter-chip.active { @apply border-wine-700 text-white bg-wine-700; }
+
+  .filter-dot   { width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.5; }
+  .filter-chip.active .filter-dot { opacity:1; }
+  .filter-count { padding:1px 6px;border-radius:999px;background:rgba(255,255,255,0.1);font-size:0.62rem; }
+  .filter-chip.active .filter-count { background:rgba(255,255,255,0.2); }
+
+  /* ── Spotlight ── */
+  .spotlight {
+    position:absolute; inset:0; pointer-events:none; z-index:0;
+    background: radial-gradient(350px circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(124,45,62,0.09), transparent 60%);
+    opacity:0; transition:opacity 0.35s ease;
+  }
+  .grid-card:hover .spotlight { opacity:1; }
+
+  /* ── Card ── */
+  .grid-card {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+  }
+  .grid-card:hover {
+    @apply border-wine-700/40;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.28), 0 0 0 1px rgba(124,45,62,0.1);
+  }
+  .light .grid-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(124,45,62,0.12);
   }
 
-  .light .filter-btn {
-    @apply text-gray-600 bg-white border-gray-200 hover:text-wine-600 hover:border-wine-300;
+  /* Selected state (when expand is open) */
+  .grid-card.is-expanded {
+    @apply border-wine-600/50;
+    box-shadow: 0 0 0 2px rgba(124,45,62,0.3), 0 16px 40px rgba(0,0,0,0.2);
+  }
+  .light .grid-card.is-expanded {
+    box-shadow: 0 0 0 2px rgba(124,45,62,0.25), 0 8px 24px rgba(0,0,0,0.1);
   }
 
-  .light .filter-btn.active {
-    @apply bg-wine-700 text-white border-wine-700;
+  /* ── Expand button rotation ── */
+  .grid-card.is-expanded .expand-icon {
+    transform: rotate(180deg);
+  }
+  .grid-card.is-expanded .expand-btn {
+    @apply border-wine-600/50 text-wine-400 bg-wine-900/20;
+  }
+  .light .grid-card.is-expanded .expand-btn {
+    @apply border-wine-300 text-wine-600 bg-wine-50;
   }
 
-  .project-card.hidden-filter {
-    @apply hidden;
+  /* ── Description expanded ── */
+  .desc-expanded.open {
+    max-height: 400px;
+    opacity: 1;
   }
 
-  /* Read More Expansion Styles */
-  .description-container.expanded {
-    max-height: 1000px !important;
+  /* ── Status badges ── */
+  .status-badge {
+    display:inline-flex; align-items:center;
+    padding:3px 8px; font-size:0.58rem; font-weight:600;
+    font-family:var(--font-mono,monospace); letter-spacing:0.08em;
+    border-radius:4px; backdrop-filter:blur(4px); text-transform:uppercase;
   }
+  .status-live     { background:rgba(16,185,129,0.15); color:rgb(52,211,153); border:1px solid rgba(16,185,129,0.3); }
+  .status-dev      { background:rgba(245,158,11,0.15); color:rgb(251,191,36); border:1px solid rgba(245,158,11,0.3); }
+  .status-archived { background:rgba(100,116,139,0.15); color:rgb(148,163,184); border:1px solid rgba(100,116,139,0.3); }
 
-  .description-container.expanded .description-overlay {
-    opacity: 0;
+  /* ── CTA buttons ── */
+  .cta-btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:5px;
+    font-weight:500; border-radius:8px; transition:all 0.2s ease;
+    text-decoration:none; cursor:pointer; white-space:nowrap;
+  }
+  .cta-sm { padding:7px 12px; font-size:0.7rem; }
+
+  .cta-primary { @apply bg-wine-700 text-white; }
+  .cta-primary:hover { @apply bg-wine-600; transform:translateY(-1px); }
+
+  .cta-ghost { @apply bg-wine-900/20 text-wine-400 border border-wine-800/40; }
+  .cta-ghost:hover { @apply bg-wine-700 text-white border-wine-700; transform:translateY(-1px); }
+
+  .light .cta-primary { @apply bg-wine-700 text-white; }
+  .light .cta-ghost { @apply bg-wine-50 text-wine-600 border-wine-200; }
+  .light .cta-ghost:hover { @apply bg-wine-700 text-white border-wine-700; }
+
+  .cta-disabled { @apply bg-surface-border/30 text-text-muted border border-surface-border/30; opacity:0.45; }
+  .light .cta-disabled { @apply bg-gray-100 text-gray-400 border-gray-200; }
+
+  /* ── Ripple ── */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(124, 45, 62, 0.18);
+    transform: scale(0);
+    animation: ripple-anim 0.55s ease-out forwards;
     pointer-events: none;
   }
+  .light .ripple { background: rgba(124, 45, 62, 0.12); }
 
-  #project-modal.active {
-    display: block;
+  @keyframes ripple-anim {
+    to { transform: scale(4); opacity: 0; }
   }
 
-  #project-modal-image {
-    touch-action: none;
-  }
+  /* ── Modal ── */
+  #project-modal.active { display:block; }
+  #project-modal-image  { touch-action:none; }
+
+  /* ── Filter hidden ── */
+  .project-card.hidden-filter { display:none; }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Read More functionality
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-      const container = card.querySelector('.description-container');
-      const text = card.querySelector('.project-description');
-      const btn = card.querySelector('.read-more-btn') as HTMLButtonElement;
-      const overlay = card.querySelector('.description-overlay');
 
-      if (container && text && btn) {
-        // Check if text exceeds the container height (approx 3 lines)
-        const isOverflowing = text.scrollHeight > 72; // 3 lines * 24px line-height approx
-
-        if (isOverflowing) {
-          btn.classList.remove('hidden');
-          
-          btn.addEventListener('click', () => {
-            const isExpanded = container.classList.toggle('expanded');
-            btn.textContent = isExpanded 
-              ? btn.getAttribute('data-show-less') 
-              : btn.getAttribute('data-read-more');
-          });
-        }
-      }
+    /* ── Spotlight ── */
+    document.querySelectorAll<HTMLElement>('.grid-card').forEach(card => {
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${((e.clientX - r.left) / r.width) * 100}%`);
+        card.style.setProperty('--mouse-y', `${((e.clientY - r.top) / r.height) * 100}%`);
+      });
     });
 
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    /* ── Ripple effect on card click ── */
+    document.querySelectorAll<HTMLElement>('.grid-card').forEach(card => {
+      card.addEventListener('click', (e: MouseEvent) => {
+        // Don't ripple when clicking links/buttons inside
+        const target = e.target as HTMLElement;
+        if (target.closest('a') || target.closest('.project-image-btn')) return;
+
+        const container = card.querySelector<HTMLElement>('.ripple-container');
+        if (!container) return;
+
+        const r = card.getBoundingClientRect();
+        const size = Math.max(r.width, r.height) * 1.5;
+        const x = e.clientX - r.left - size / 2;
+        const y = e.clientY - r.top - size / 2;
+
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+        container.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+
+    /* ── Expand / Collapse description ── */
+    document.querySelectorAll<HTMLElement>('.grid-card').forEach(card => {
+      const expandBtn  = card.querySelector<HTMLElement>('.expand-btn');
+      const expanded   = card.querySelector<HTMLElement>('.desc-expanded');
+      const preview    = card.querySelector<HTMLElement>('.desc-preview');
+
+      if (!expandBtn || !expanded) return;
+
+      expandBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // no disparar ripple del card
+        const isOpen = expanded.classList.toggle('open');
+        card.classList.toggle('is-expanded', isOpen);
+        expandBtn.setAttribute('aria-expanded', String(isOpen));
+
+        if (isOpen) {
+          // Ocultar preview para no duplicar texto
+          preview?.classList.add('hidden');
+          // Scroll suave al card en mobile
+          if (window.innerWidth < 768) {
+            setTimeout(() => {
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 150);
+          }
+        } else {
+          preview?.classList.remove('hidden');
+        }
+      });
+    });
+
+    /* ── Filter ── */
+    const filterBtns   = document.querySelectorAll<HTMLElement>('.filter-chip');
+    const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filter = btn.getAttribute('data-filter');
 
         projectCards.forEach(card => {
-          const technologies = card.getAttribute('data-technologies')?.split(',') || [];
-          
-          if (filter === 'all' || technologies.includes(filter)) {
-            card.classList.remove('hidden-filter');
-          } else {
-            card.classList.add('hidden-filter');
-          }
+          const techs = card.getAttribute('data-technologies')?.split(',') || [];
+          const show  = filter === 'all' || techs.includes(filter!);
+          card.classList.toggle('hidden-filter', !show);
         });
       });
     });
 
-    // Modal & Zoom functionality
-    const modal = document.getElementById('project-modal');
-    const modalImage = document.getElementById('project-modal-image') as HTMLImageElement;
-    const modalTitle = document.getElementById('project-modal-title');
-    const modalClose = document.getElementById('project-modal-close');
-    const modalBackdrop = document.getElementById('project-modal-backdrop');
+    /* ── Zoom Modal ── */
+    const modal          = document.getElementById('project-modal');
+    const modalImage     = document.getElementById('project-modal-image') as HTMLImageElement;
+    const modalTitle     = document.getElementById('project-modal-title');
+    const modalClose     = document.getElementById('project-modal-close');
+    const modalBackdrop  = document.getElementById('project-modal-backdrop');
     const imageContainer = document.getElementById('image-container');
-    const imageBtns = document.querySelectorAll('.project-image-btn');
-    
-    // Zoom controls
-    const zoomInBtn = document.getElementById('zoom-in-btn');
-    const zoomOutBtn = document.getElementById('zoom-out-btn');
-    const zoomResetBtn = document.getElementById('zoom-reset-btn');
-    const zoomLevel = document.getElementById('zoom-level');
-    const zoomInBtnMobile = document.getElementById('zoom-in-btn-mobile');
-    const zoomOutBtnMobile = document.getElementById('zoom-out-btn-mobile');
-    const zoomLevelMobile = document.getElementById('zoom-level-mobile');
+    const zoomLevel      = document.getElementById('zoom-level');
+    const zoomLevelM     = document.getElementById('zoom-level-mobile');
 
-    let scale = 1;
-    let translateX = 0;
-    let translateY = 0;
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
+    let scale = 1, tx = 0, ty = 0, dragging = false, sx = 0, sy = 0;
+    const MIN = 0.5, MAX = 4, STEP = 0.25;
 
-    const MIN_SCALE = 0.5;
-    const MAX_SCALE = 4;
-    const SCALE_STEP = 0.25;
+    const applyTransform = () => { if (modalImage) modalImage.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`; };
+    const applyDisplay   = () => { const p = Math.round(scale*100)+'%'; if(zoomLevel) zoomLevel.textContent=p; if(zoomLevelM) zoomLevelM.textContent=p; };
+    const resetZoom      = () => { scale=1;tx=0;ty=0;applyTransform();applyDisplay(); };
+    const zoomIn         = () => { if(scale<MAX){scale=Math.min(scale+STEP,MAX);applyTransform();applyDisplay();} };
+    const zoomOut        = () => { if(scale>MIN){scale=Math.max(scale-STEP,MIN);if(scale<=1){tx=0;ty=0;}applyTransform();applyDisplay();} };
 
-    function updateTransform() {
-      if (modalImage) {
-        modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      }
-    }
+    imageContainer?.addEventListener('wheel', e => { e.preventDefault(); e.deltaY<0?zoomIn():zoomOut(); }, {passive:false});
+    imageContainer?.addEventListener('mousedown', e => { if(scale>1){dragging=true;sx=e.clientX-tx;sy=e.clientY-ty;(imageContainer as HTMLElement).style.cursor='grabbing';} });
+    document.addEventListener('mousemove', e => { if(dragging){tx=e.clientX-sx;ty=e.clientY-sy;applyTransform();} });
+    document.addEventListener('mouseup', () => { dragging=false; if(imageContainer)(imageContainer as HTMLElement).style.cursor=scale>1?'grab':'default'; });
 
-    function updateZoomDisplay() {
-      const percent = Math.round(scale * 100) + '%';
-      if (zoomLevel) zoomLevel.textContent = percent;
-      if (zoomLevelMobile) zoomLevelMobile.textContent = percent;
-    }
+    let lastDist=0, lastTX=0, lastTY=0;
+    imageContainer?.addEventListener('touchstart', e => {
+      if(e.touches.length===2) lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+      else if(e.touches.length===1&&scale>1){dragging=true;lastTX=e.touches[0].clientX-tx;lastTY=e.touches[0].clientY-ty;}
+    },{passive:true});
+    imageContainer?.addEventListener('touchmove', e => {
+      if(e.touches.length===2){
+        const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+        if(lastDist>0){const delta=d-lastDist;if(delta>0&&scale<MAX)scale=Math.min(scale+0.02,MAX);else if(delta<0&&scale>MIN)scale=Math.max(scale-0.02,MIN);applyTransform();applyDisplay();}lastDist=d;
+      }else if(e.touches.length===1&&dragging){tx=e.touches[0].clientX-lastTX;ty=e.touches[0].clientY-lastTY;applyTransform();}
+    },{passive:true});
+    imageContainer?.addEventListener('touchend', () => {dragging=false;lastDist=0;});
 
-    function resetZoom() {
-      scale = 1;
-      translateX = 0;
-      translateY = 0;
-      updateTransform();
-      updateZoomDisplay();
-    }
+    document.getElementById('zoom-in-btn')?.addEventListener('click', zoomIn);
+    document.getElementById('zoom-out-btn')?.addEventListener('click', zoomOut);
+    document.getElementById('zoom-reset-btn')?.addEventListener('click', resetZoom);
+    document.getElementById('zoom-in-btn-mobile')?.addEventListener('click', zoomIn);
+    document.getElementById('zoom-out-btn-mobile')?.addEventListener('click', zoomOut);
 
-    function zoomIn() {
-      if (scale < MAX_SCALE) {
-        scale = Math.min(scale + SCALE_STEP, MAX_SCALE);
-        updateTransform();
-        updateZoomDisplay();
-      }
-    }
-
-    function zoomOut() {
-      if (scale > MIN_SCALE) {
-        scale = Math.max(scale - SCALE_STEP, MIN_SCALE);
-        // Reset position if zooming out to fit
-        if (scale <= 1) {
-          translateX = 0;
-          translateY = 0;
-        }
-        updateTransform();
-        updateZoomDisplay();
-      }
-    }
-
-    // Mouse wheel zoom
-    imageContainer?.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      if (e.deltaY < 0) {
-        zoomIn();
-      } else {
-        zoomOut();
-      }
-    }, { passive: false });
-
-    // Drag to pan
-    imageContainer?.addEventListener('mousedown', (e) => {
-      if (scale > 1) {
-        isDragging = true;
-        startX = e.clientX - translateX;
-        startY = e.clientY - translateY;
-        imageContainer.style.cursor = 'grabbing';
-      }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        translateX = e.clientX - startX;
-        translateY = e.clientY - startY;
-        updateTransform();
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      if (imageContainer) imageContainer.style.cursor = scale > 1 ? 'grab' : 'default';
-    });
-
-    // Touch support for mobile
-    let lastTouchDistance = 0;
-    let lastTouchX = 0;
-    let lastTouchY = 0;
-
-    imageContainer?.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 2) {
-        // Pinch zoom start
-        lastTouchDistance = Math.hypot(
-          e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.touches[1].clientY
-        );
-      } else if (e.touches.length === 1 && scale > 1) {
-        // Pan start
-        isDragging = true;
-        lastTouchX = e.touches[0].clientX - translateX;
-        lastTouchY = e.touches[0].clientY - translateY;
-      }
-    }, { passive: true });
-
-    imageContainer?.addEventListener('touchmove', (e) => {
-      if (e.touches.length === 2) {
-        // Pinch zoom
-        const distance = Math.hypot(
-          e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.tches[1].clientY
-        );
-        
-        if (lastTouchDistance > 0) {
-          const delta = distance - lastTouchDistance;
-          if (delta > 0 && scale < MAX_SCALE) {
-            scale = Math.min(scale + 0.02, MAX_SCALE);
-          } else if (delta < 0 && scale > MIN_SCALE) {
-            scale = Math.max(scale - 0.02, MIN_SCALE);
-          }
-          updateTransform();
-          updateZoomDisplay();
-        }
-        
-        lastTouchDistance = distance;
-      } else if (e.touches.length === 1 && isDragging) {
-        // Pan
-        translateX = e.touches[0].clientX - lastTouchX;
-        translateY = e.touches[0].clientY - lastTouchY;
-        updateTransform();
-      }
-    }, { passive: true });
-
-    imageContainer?.addEventListener('touchend', () => {
-      isDragging = false;
-      lastTouchDistance = 0;
-    });
-
-    // Button controls
-    zoomInBtn?.addEventListener('click', zoomIn);
-    zoomOutBtn?.addEventListener('click', zoomOut);
-    zoomResetBtn?.addEventListener('click', resetZoom);
-    zoomInBtnMobile?.addEventListener('click', zoomIn);
-    zoomOutBtnMobile?.addEventListener('click', zoomOut);
-
-    // Open modal
-    imageBtns.forEach(btn => {
+    document.querySelectorAll('.project-image-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const image = btn.getAttribute('data-image');
         const title = btn.getAttribute('data-title');
-        
         if (image && modalImage && modalTitle && modal) {
           resetZoom();
           modalImage.src = image;
@@ -616,24 +668,19 @@ const dragHint = lang === 'es' ? 'Usa la rueda del mouse o los botones para hace
       });
     });
 
-    // Close modal
     const closeModal = () => {
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-        resetZoom();
-      }
+      modal?.classList.remove('active');
+      document.body.style.overflow = '';
+      resetZoom();
     };
-
     modalClose?.addEventListener('click', closeModal);
     modalBackdrop?.addEventListener('click', closeModal);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-      if (modal?.classList.contains('active')) {
-        if (e.key === '+' || e.key === '=') zoomIn();
-        if (e.key === '-') zoomOut();
-        if (e.key === '0') resetZoom();
+    document.addEventListener('keydown', e => {
+      if(e.key==='Escape') closeModal();
+      if(modal?.classList.contains('active')){
+        if(e.key==='+'||e.key==='=') zoomIn();
+        if(e.key==='-') zoomOut();
+        if(e.key==='0') resetZoom();
       }
     });
   });
